@@ -8,100 +8,100 @@ const CATEGORY_FIELDS = {
   valorant: [
     { name: 'rank', label: 'Rank', type: 'select', options: ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Ascendant', 'Immortal', 'Radiant'], required: true },
     { name: 'level', label: 'Hesap Seviyesi', type: 'number', placeholder: '1-500', required: true },
-    { name: 'agent_count', label: 'Açık Ajan Sayısı', type: 'number', placeholder: '0-24' },
-    { name: 'skin_count', label: 'Premium Skin Sayısı', type: 'number', placeholder: '0+' },
+    { name: 'agent_count', label: 'AÃ§Ä±k Ajan SayÄ±sÄ±', type: 'number', placeholder: '0-24' },
+    { name: 'skin_count', label: 'Premium Skin SayÄ±sÄ±', type: 'number', placeholder: '0+' },
     { name: 'vp_balance', label: 'VP Bakiyesi', type: 'number', placeholder: '0+' },
-    { name: 'region', label: 'Bölge', type: 'select', options: ['Europe (EU)', 'Turkey (TR)', 'Asia (AP)', 'NA', 'BR', 'KR'] }
+    { name: 'region', label: 'BÃ¶lge', type: 'select', options: ['Europe (EU)', 'Turkey (TR)', 'Asia (AP)', 'NA', 'BR', 'KR'] }
   ],
   pubg: [
     { name: 'rank', label: 'Rank', type: 'select', options: ['Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Crown', 'Ace', 'Conqueror'], required: true },
     { name: 'level', label: 'Seviye', type: 'number', placeholder: '1-100' },
-    { name: 'outfit_count', label: 'Kıyafet Sayısı', type: 'number' },
+    { name: 'outfit_count', label: 'KÄ±yafet SayÄ±sÄ±', type: 'number' },
     { name: 'rp_balance', label: 'UC/RP Bakiyesi', type: 'number' },
-    { name: 'region', label: 'Bölge', type: 'select', options: ['Asia', 'Europe', 'NA', 'KRJP'] }
+    { name: 'region', label: 'BÃ¶lge', type: 'select', options: ['Asia', 'Europe', 'NA', 'KRJP'] }
   ],
   cs2: [
     { name: 'rank', label: 'Rank', type: 'select', options: ['Silver', 'Gold Nova', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global Elite'] },
     { name: 'hours_played', label: 'Oynanan Saat', type: 'number' },
-    { name: 'inventory_value', label: 'Envanter Değeri (₺)', type: 'number' },
-    { name: 'prime_status', label: 'Prime Durumu', type: 'select', options: ['Evet', 'Hayır'] }
+    { name: 'inventory_value', label: 'Envanter DeÄŸeri (â‚º)', type: 'number' },
+    { name: 'prime_status', label: 'Prime Durumu', type: 'select', options: ['Evet', 'HayÄ±r'] }
   ],
   lol: [
     { name: 'rank', label: 'Rank', type: 'select', options: ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond', 'Master', 'Grandmaster', 'Challenger'] },
     { name: 'level', label: 'Hesap Seviyesi', type: 'number' },
-    { name: 'champion_count', label: 'Şampiyon Sayısı', type: 'number' },
-    { name: 'skin_count', label: 'Skin Sayısı', type: 'number' },
+    { name: 'champion_count', label: 'Åžampiyon SayÄ±sÄ±', type: 'number' },
+    { name: 'skin_count', label: 'Skin SayÄ±sÄ±', type: 'number' },
     { name: 'region', label: 'Sunucu', type: 'select', options: ['TR', 'EUW', 'EUNE', 'NA', 'KR'] }
   ],
   gta5: [
     { name: 'level', label: 'Seviye', type: 'number' },
-    { name: 'money', label: 'Para Miktarı ($)', type: 'number' },
-    { name: 'vehicle_count', label: 'Araç Sayısı', type: 'number' },
-    { name: 'property_count', label: 'Mülk Sayısı', type: 'number' }
+    { name: 'money', label: 'Para MiktarÄ± ($)', type: 'number' },
+    { name: 'vehicle_count', label: 'AraÃ§ SayÄ±sÄ±', type: 'number' },
+    { name: 'property_count', label: 'MÃ¼lk SayÄ±sÄ±', type: 'number' }
   ],
   minecraft: [
     { name: 'edition', label: 'Versiyon', type: 'select', options: ['Java', 'Bedrock', 'Java + Bedrock'] },
-    { name: 'account_type', label: 'Hesap Türü', type: 'select', options: ['Premium', 'Microsoft'] }
+    { name: 'account_type', label: 'Hesap TÃ¼rÃ¼', type: 'select', options: ['Premium', 'Microsoft'] }
   ],
   instagram: [
-    { name: 'follower_count', label: 'Takipçi Sayısı', type: 'number', required: true },
+    { name: 'follower_count', label: 'TakipÃ§i SayÄ±sÄ±', type: 'number', required: true },
     { name: 'following_count', label: 'Takip Edilen', type: 'number' },
-    { name: 'post_count', label: 'Gönderi Sayısı', type: 'number' },
-    { name: 'account_age', label: 'Hesap Yaşı', type: 'select', options: ['0-6 ay', '6-12 ay', '1-2 yıl', '2-5 yıl', '5+ yıl'] },
-    { name: 'verification_status', label: 'Doğrulama', type: 'select', options: ['Doğrulanmamış', 'Mavi Tik Bekliyor'] }
+    { name: 'post_count', label: 'GÃ¶nderi SayÄ±sÄ±', type: 'number' },
+    { name: 'account_age', label: 'Hesap YaÅŸÄ±', type: 'select', options: ['0-6 ay', '6-12 ay', '1-2 yÄ±l', '2-5 yÄ±l', '5+ yÄ±l'] },
+    { name: 'verification_status', label: 'DoÄŸrulama', type: 'select', options: ['DoÄŸrulanmamÄ±ÅŸ', 'Mavi Tik Bekliyor'] }
   ],
   tiktok: [
-    { name: 'follower_count', label: 'Takipçi Sayısı', type: 'number', required: true },
+    { name: 'follower_count', label: 'TakipÃ§i SayÄ±sÄ±', type: 'number', required: true },
     { name: 'following_count', label: 'Takip Edilen', type: 'number' },
-    { name: 'likes_count', label: 'Toplam Beğeni', type: 'number' },
-    { name: 'video_count', label: 'Video Sayısı', type: 'number' },
-    { name: 'account_age', label: 'Hesap Yaşı', type: 'select', options: ['0-6 ay', '6-12 ay', '1-2 yıl', '2+ yıl'] }
+    { name: 'likes_count', label: 'Toplam BeÄŸeni', type: 'number' },
+    { name: 'video_count', label: 'Video SayÄ±sÄ±', type: 'number' },
+    { name: 'account_age', label: 'Hesap YaÅŸÄ±', type: 'select', options: ['0-6 ay', '6-12 ay', '1-2 yÄ±l', '2+ yÄ±l'] }
   ],
   youtube: [
-    { name: 'subscriber_count', label: 'Abone Sayısı', type: 'number', required: true },
-    { name: 'video_count', label: 'Video Sayısı', type: 'number' },
-    { name: 'total_views', label: 'Toplam İzlenme', type: 'number' },
+    { name: 'subscriber_count', label: 'Abone SayÄ±sÄ±', type: 'number', required: true },
+    { name: 'video_count', label: 'Video SayÄ±sÄ±', type: 'number' },
+    { name: 'total_views', label: 'Toplam Ä°zlenme', type: 'number' },
     { name: 'monetization', label: 'Para Kazanma', type: 'select', options: ['Aktif', 'Pasif', 'Uygun'] },
-    { name: 'account_age', label: 'Kanal Yaşı', type: 'select', options: ['0-6 ay', '6-12 ay', '1-3 yıl', '3+ yıl'] }
+    { name: 'account_age', label: 'Kanal YaÅŸÄ±', type: 'select', options: ['0-6 ay', '6-12 ay', '1-3 yÄ±l', '3+ yÄ±l'] }
   ],
   twitter: [
-    { name: 'follower_count', label: 'Takipçi Sayısı', type: 'number', required: true },
+    { name: 'follower_count', label: 'TakipÃ§i SayÄ±sÄ±', type: 'number', required: true },
     { name: 'following_count', label: 'Takip Edilen', type: 'number' },
-    { name: 'tweet_count', label: 'Tweet Sayısı', type: 'number' },
-    { name: 'account_age', label: 'Hesap Yaşı', type: 'select', options: ['0-6 ay', '6-12 ay', '1-3 yıl', '3+ yıl'] }
+    { name: 'tweet_count', label: 'Tweet SayÄ±sÄ±', type: 'number' },
+    { name: 'account_age', label: 'Hesap YaÅŸÄ±', type: 'select', options: ['0-6 ay', '6-12 ay', '1-3 yÄ±l', '3+ yÄ±l'] }
   ],
   facebook: [
-    { name: 'friend_count', label: 'Arkadaş Sayısı', type: 'number' },
-    { name: 'account_age', label: 'Hesap Yaşı', type: 'select', options: ['0-1 yıl', '1-3 yıl', '3-5 yıl', '5+ yıl'] }
+    { name: 'friend_count', label: 'ArkadaÅŸ SayÄ±sÄ±', type: 'number' },
+    { name: 'account_age', label: 'Hesap YaÅŸÄ±', type: 'select', options: ['0-1 yÄ±l', '1-3 yÄ±l', '3-5 yÄ±l', '5+ yÄ±l'] }
   ],
   twitch: [
-    { name: 'follower_count', label: 'Takipçi Sayısı', type: 'number', required: true },
-    { name: 'stream_hours', label: 'Yayın Saati', type: 'number' },
+    { name: 'follower_count', label: 'TakipÃ§i SayÄ±sÄ±', type: 'number', required: true },
+    { name: 'stream_hours', label: 'YayÄ±n Saati', type: 'number' },
     { name: 'affiliate_status', label: 'Affiliate Durumu', type: 'select', options: ['Yok', 'Affiliate', 'Partner'] }
   ],
   spotify: [
-    { name: 'plan', label: 'Plan Türü', type: 'select', options: ['Premium Bireysel', 'Premium Aile', 'Premium Duo', 'Student'], required: true },
-    { name: 'remaining_time', label: 'Kalan Süre', type: 'select', options: ['1 Ay', '3 Ay', '6 Ay', '1 Yıl'] }
+    { name: 'plan', label: 'Plan TÃ¼rÃ¼', type: 'select', options: ['Premium Bireysel', 'Premium Aile', 'Premium Duo', 'Student'], required: true },
+    { name: 'remaining_time', label: 'Kalan SÃ¼re', type: 'select', options: ['1 Ay', '3 Ay', '6 Ay', '1 YÄ±l'] }
   ],
   netflix: [
-    { name: 'plan', label: 'Plan Türü', type: 'select', options: ['Temel', 'Standart', 'Premium'], required: true },
-    { name: 'screen_count', label: 'Ekran Sayısı', type: 'select', options: ['1', '2', '4'] },
-    { name: 'remaining_time', label: 'Kalan Süre', type: 'select', options: ['1 Ay', '3 Ay', '6 Ay', '1 Yıl'] }
+    { name: 'plan', label: 'Plan TÃ¼rÃ¼', type: 'select', options: ['Temel', 'Standart', 'Premium'], required: true },
+    { name: 'screen_count', label: 'Ekran SayÄ±sÄ±', type: 'select', options: ['1', '2', '4'] },
+    { name: 'remaining_time', label: 'Kalan SÃ¼re', type: 'select', options: ['1 Ay', '3 Ay', '6 Ay', '1 YÄ±l'] }
   ]
 };
 
 const DELIVERY_OPTIONS = [
-  { value: 'instant', label: 'Anında Teslim', description: 'Otomatik teslim, 5 dakika içinde' },
-  { value: '1 saat', label: '1 Saat İçinde', description: 'Manuel teslim, 1 saat içinde' },
-  { value: '24 saat', label: '24 Saat İçinde', description: 'Standart teslim süresi' },
-  { value: '3 gün', label: '3 Gün İçinde', description: 'Uzun süreli hazırlık gereken ilanlar' }
+  { value: 'instant', label: 'AnÄ±nda Teslim', description: 'Otomatik teslim, 5 dakika iÃ§inde' },
+  { value: '1 saat', label: '1 Saat Ä°Ã§inde', description: 'Manuel teslim, 1 saat iÃ§inde' },
+  { value: '24 saat', label: '24 Saat Ä°Ã§inde', description: 'Standart teslim sÃ¼resi' },
+  { value: '3 gÃ¼n', label: '3 GÃ¼n Ä°Ã§inde', description: 'Uzun sÃ¼reli hazÄ±rlÄ±k gereken ilanlar' }
 ];
 
 const GUARANTEE_OPTIONS = [
-  { value: 0, label: 'Garanti Yok', description: 'Garanti süresi yok' },
-  { value: 1, label: '24 Saat', description: '1 gün garanti' },
-  { value: 7, label: '7 Gün', description: '1 hafta garanti' },
-  { value: 30, label: '30 Gün', description: '1 ay garanti (Önerilen)' }
+  { value: 0, label: 'Garanti Yok', description: 'Garanti sÃ¼resi yok' },
+  { value: 1, label: '24 Saat', description: '1 gÃ¼n garanti' },
+  { value: 7, label: '7 GÃ¼n', description: '1 hafta garanti' },
+  { value: 30, label: '30 GÃ¼n', description: '1 ay garanti (Ã–nerilen)' }
 ];
 
 export default function CreateListing() {
@@ -212,13 +212,13 @@ export default function CreateListing() {
     const filesToAdd = files.slice(0, remainingSlots);
 
     if (filesToAdd.length === 0) {
-      addToast(`Maksimum ${MAX_IMAGES} görsel yükleyebilirsiniz`, 'warning');
+      addToast(`Maksimum ${MAX_IMAGES} gÃ¶rsel yÃ¼kleyebilirsiniz`, 'warning');
       return;
     }
 
     const invalidFiles = filesToAdd.filter(file => file.size > 5 * 1024 * 1024);
     if (invalidFiles.length > 0) {
-      addToast('Görseller 5MB\'dan küçük olmalıdır', 'error');
+      addToast('GÃ¶rseller 5MB\'dan kÃ¼Ã§Ã¼k olmalÄ±dÄ±r', 'error');
       return;
     }
 
@@ -227,7 +227,7 @@ export default function CreateListing() {
     setImageFiles(prev => [...prev, ...filesToAdd]);
     setImagePreviews(prev => [...prev, ...newPreviews]);
     
-    addToast(`${filesToAdd.length} görsel eklendi`, 'success', 2000);
+    addToast(`${filesToAdd.length} gÃ¶rsel eklendi`, 'success', 2000);
   };
 
   const removeImage = (index) => {
@@ -255,7 +255,7 @@ export default function CreateListing() {
     }));
     setCategorySearch(category.name);
     setShowCategoryDropdown(false);
-    addToast(`${category.name} seçildi`, 'success', 2000);
+    addToast(`${category.name} seÃ§ildi`, 'success', 2000);
   };
 
   const uploadImages = async () => {
@@ -277,8 +277,8 @@ export default function CreateListing() {
           });
 
         if (error) {
-          console.error('Görsel yükleme hatası:', error);
-          addToast('Görseller yüklenirken hata oluştu', 'error');
+          console.error('GÃ¶rsel yÃ¼kleme hatasÄ±:', error);
+          addToast('GÃ¶rseller yÃ¼klenirken hata oluÅŸtu', 'error');
           return [];
         }
 
@@ -292,7 +292,7 @@ export default function CreateListing() {
       return uploadedUrls;
     } catch (err) {
       console.error('Upload error:', err);
-      addToast('Görsel yükleme hatası: ' + err.message, 'error');
+      addToast('GÃ¶rsel yÃ¼kleme hatasÄ±: ' + err.message, 'error');
       return [];
     } finally {
       setUploadingImages(false);
@@ -302,18 +302,18 @@ export default function CreateListing() {
   const validateStep = (step) => {
     if (step === 1) {
       if (!formData.title || !formData.category_slug) {
-        addToast('Lütfen başlık ve kategori seçin', 'warning');
+        addToast('LÃ¼tfen baÅŸlÄ±k ve kategori seÃ§in', 'warning');
         return false;
       }
       return true;
     }
     if (step === 2) {
       if (!formData.price || parseFloat(formData.price) <= 0) {
-        addToast('Geçerli bir fiyat girin', 'warning');
+        addToast('GeÃ§erli bir fiyat girin', 'warning');
         return false;
       }
       if (imageFiles.length < MIN_IMAGES) {
-        addToast(`En az ${MIN_IMAGES} görsel yükleyin`, 'warning');
+        addToast(`En az ${MIN_IMAGES} gÃ¶rsel yÃ¼kleyin`, 'warning');
         return false;
       }
       return true;
@@ -335,14 +335,14 @@ export default function CreateListing() {
     if (!validateStep(1) || !validateStep(2)) return;
     
     if (!currentUser) {
-      addToast('İlan vermek için giriş yapmalısınız', 'warning');
+      addToast('Ä°lan vermek iÃ§in giriÅŸ yapmalÄ±sÄ±nÄ±z', 'warning');
       navigate('/login');
       return;
     }
 
     if (formData.is_featured && userBalance < FEATURED_PRICE) {
       addToast(
-        `Vitrin ilanı için bakiyeniz yetersiz. Gerekli: ₺${FEATURED_PRICE}, Bakiyeniz: ₺${userBalance}`, 
+        `Vitrin ilanÄ± iÃ§in bakiyeniz yetersiz. Gerekli: â‚º${FEATURED_PRICE}, Bakiyeniz: â‚º${userBalance}`, 
         'error'
       );
       return;
@@ -426,17 +426,17 @@ export default function CreateListing() {
             user_id: sellerId,
             amount: -FEATURED_PRICE,
             type: 'purchase',
-            description: 'Vitrin ilanı ücreti'
+            description: 'Vitrin ilanÄ± Ã¼creti'
           }]);
         }
       }
 
       setSuccess(true);
-      addToast('İlan başarıyla yayınlandı! 🎉', 'success');
+      addToast('Ä°lan baÅŸarÄ±yla yayÄ±nlandÄ±! ðŸŽ‰', 'success');
       setTimeout(() => navigate('/profile'), 2000);
     } catch (err) {
-      console.error('İlan ekleme hatası:', err);
-      addToast('İlan eklenirken hata oluştu: ' + err.message, 'error');
+      console.error('Ä°lan ekleme hatasÄ±:', err);
+      addToast('Ä°lan eklenirken hata oluÅŸtu: ' + err.message, 'error');
     } finally {
       setLoading(false);
     }
@@ -447,13 +447,13 @@ export default function CreateListing() {
       <div className="max-w-2xl mx-auto px-4 py-16">
         <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
           <ArrowLeft className="w-4 h-4" />
-          Ana Sayfaya Dön
+          Ana Sayfaya DÃ¶n
         </Link>
         <div className="bg-dark-800 rounded-2xl p-12 border border-dark-700 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Giriş Yapmanız Gerekiyor</h2>
-          <p className="text-text-muted mb-6">İlan vermek için önce giriş yapmalısınız.</p>
+          <h2 className="text-2xl font-bold text-white mb-4">GiriÅŸ YapmanÄ±z Gerekiyor</h2>
+          <p className="text-text-muted mb-6">Ä°lan vermek iÃ§in Ã¶nce giriÅŸ yapmalÄ±sÄ±nÄ±z.</p>
           <Link to="/login" className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-semibold transition-all">
-            Giriş Yap
+            GiriÅŸ Yap
           </Link>
         </div>
       </div>
@@ -465,8 +465,8 @@ export default function CreateListing() {
       <div className="max-w-2xl mx-auto px-4 py-16">
         <div className="bg-dark-800 rounded-2xl p-12 border border-green-500/30 text-center">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-2">İlan Başarıyla Yayınlandı!</h2>
-          <p className="text-text-muted">Profil sayfanıza yönlendiriliyorsunuz...</p>
+          <h2 className="text-2xl font-bold text-white mb-2">Ä°lan BaÅŸarÄ±yla YayÄ±nlandÄ±!</h2>
+          <p className="text-text-muted">Profil sayfanÄ±za yÃ¶nlendiriliyorsunuz...</p>
         </div>
       </div>
     );
@@ -478,12 +478,12 @@ export default function CreateListing() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <Link to="/profile" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Profile Dön
+        Profile DÃ¶n
       </Link>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">İlan Ver</h1>
-        <p className="text-text-muted">3 kolay adımda ilanını yayınla</p>
+        <h1 className="text-3xl font-bold text-white mb-2">Ä°lan Ver</h1>
+        <p className="text-text-muted">3 kolay adÄ±mda ilanÄ±nÄ± yayÄ±nla</p>
       </div>
 
       {/* Progress Bar */}
@@ -508,7 +508,7 @@ export default function CreateListing() {
         </div>
         <div className="flex justify-between text-xs text-text-muted">
           <span>Temel Bilgiler</span>
-          <span>Fiyat & Görseller</span>
+          <span>Fiyat & GÃ¶rseller</span>
           <span>Detaylar & Teslimat</span>
         </div>
       </div>
@@ -517,10 +517,10 @@ export default function CreateListing() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-text-muted text-sm mb-1">Mevcut Bakiye</p>
-            <p className="text-2xl font-bold text-white">₺{userBalance.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-white">â‚º{userBalance.toFixed(2)}</p>
           </div>
           <div className="text-xs text-text-muted">
-            Vitrin ücreti: ₺{FEATURED_PRICE}
+            Vitrin Ã¼creti: â‚º{FEATURED_PRICE}
           </div>
         </div>
       </div>
@@ -545,7 +545,7 @@ export default function CreateListing() {
                   setFormData(prev => ({ ...prev, category_slug: '', category_name: '', details: {} }));
                 }}
                 onFocus={() => setShowCategoryDropdown(true)}
-                placeholder="Örn: Valorant, Instagram..."
+                placeholder="Ã–rn: Valorant, Instagram..."
                 className="w-full bg-dark-900 text-white pl-10 pr-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted"
                 required
               />
@@ -561,7 +561,7 @@ export default function CreateListing() {
                     >
                       <div className="text-white font-medium">{cat.name}</div>
                       <div className="text-text-muted text-xs">
-                        {cat.category_group === 'game' ? '🎮 Oyun' : '📱 Sosyal Medya'} • {cat.listing_count} ilan
+                        {cat.category_group === 'game' ? 'ðŸŽ® Oyun' : 'ðŸ“± Sosyal Medya'} â€¢ {cat.listing_count} ilan
                       </div>
                     </button>
                   ))}
@@ -572,14 +572,14 @@ export default function CreateListing() {
 
           <div>
             <label className="block text-white font-medium mb-2">
-              İlan Başlığı <span className="text-red-500">*</span>
+              Ä°lan BaÅŸlÄ±ÄŸÄ± <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               name="title"
               value={formData.title}
               onChange={handleChange}
-              placeholder="Örn: Valorant Immortal 3 Hesap - 50+ Skin"
+              placeholder="Ã–rn: Valorant Immortal 3 Hesap - 50+ Skin"
               maxLength={100}
               className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted"
               required
@@ -588,12 +588,12 @@ export default function CreateListing() {
           </div>
 
           <div>
-            <label className="block text-white font-medium mb-2">Açıklama</label>
+            <label className="block text-white font-medium mb-2">AÃ§Ä±klama</label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="İlanınızın detaylarını yazın..."
+              placeholder="Ä°lanÄ±nÄ±zÄ±n detaylarÄ±nÄ± yazÄ±n..."
               rows="5"
               maxLength={2000}
               className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted resize-none"
@@ -617,7 +617,7 @@ export default function CreateListing() {
                     handleAddTag();
                   }
                 }}
-                placeholder="Etiket ekle (örn: ucuz, hızlı teslim)"
+                placeholder="Etiket ekle (Ã¶rn: ucuz, hÄ±zlÄ± teslim)"
                 className="flex-1 bg-dark-900 text-white px-4 py-2 rounded-xl border border-dark-700 focus:outline-none focus:border-primary text-sm"
               />
               <button
@@ -640,7 +640,7 @@ export default function CreateListing() {
                 ))}
               </div>
             )}
-            <p className="text-text-muted text-xs mt-1">Maksimum 10 etiket. Arama sonuçlarında öne çıkmanızı sağlar.</p>
+            <p className="text-text-muted text-xs mt-1">Maksimum 10 etiket. Arama sonuÃ§larÄ±nda Ã¶ne Ã§Ä±kmanÄ±zÄ± saÄŸlar.</p>
           </div>
         </div>
       )}
@@ -648,11 +648,11 @@ export default function CreateListing() {
       {/* ADIM 2 */}
       {currentStep === 2 && (
         <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700 space-y-6">
-          <h2 className="text-xl font-bold text-white mb-4">Fiyat & Görseller</h2>
+          <h2 className="text-xl font-bold text-white mb-4">Fiyat & GÃ¶rseller</h2>
 
           <div>
             <label className="block text-white font-medium mb-2">
-              Fiyat (₺) <span className="text-red-500">*</span>
+              Fiyat (â‚º) <span className="text-red-500">*</span>
             </label>
             <input
               type="number"
@@ -666,13 +666,13 @@ export default function CreateListing() {
               required
             />
             <p className="text-text-muted text-xs mt-1">
-              Hizmet bedeli (%5) düşüldükten sonra elinize geçecek: ₺{(parseFloat(formData.price || 0) * 0.95).toFixed(2)}
+              Hizmet bedeli (%5) dÃ¼ÅŸÃ¼ldÃ¼kten sonra elinize geÃ§ecek: â‚º{(parseFloat(formData.price || 0) * 0.95).toFixed(2)}
             </p>
           </div>
 
           <div>
             <label className="block text-white font-medium mb-2">
-              Görseller ({imageFiles.length}/{MAX_IMAGES}) <span className="text-red-500">*</span>
+              GÃ¶rseller ({imageFiles.length}/{MAX_IMAGES}) <span className="text-red-500">*</span>
             </label>
             <div className="border-2 border-dashed border-dark-700 rounded-xl p-6 hover:border-primary/50 transition-colors">
               <input
@@ -688,7 +688,7 @@ export default function CreateListing() {
                 <div className="text-center">
                   <Upload className="w-10 h-10 text-text-muted mx-auto mb-2" />
                   <p className="text-white font-medium mb-1">
-                    {imageFiles.length >= MAX_IMAGES ? 'Maksimum görsel sayısına ulaşıldı' : 'Görsel seçmek için tıklayın'}
+                    {imageFiles.length >= MAX_IMAGES ? 'Maksimum gÃ¶rsel sayÄ±sÄ±na ulaÅŸÄ±ldÄ±' : 'GÃ¶rsel seÃ§mek iÃ§in tÄ±klayÄ±n'}
                   </p>
                   <p className="text-text-muted text-xs">PNG, JPG, GIF (Her biri Max 5MB)</p>
                 </div>
@@ -709,7 +709,7 @@ export default function CreateListing() {
                     </button>
                     {index === 0 && (
                       <div className="absolute bottom-1 left-1 bg-primary text-white text-xs px-2 py-0.5 rounded">
-                        Ana Görsel
+                        Ana GÃ¶rsel
                       </div>
                     )}
                   </div>
@@ -726,9 +726,9 @@ export default function CreateListing() {
           {currentCategoryFields.length > 0 && (
             <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700">
               <h2 className="text-xl font-bold text-white mb-4">
-                {formData.category_name} Detayları
+                {formData.category_name} DetaylarÄ±
               </h2>
-              <p className="text-text-muted text-sm mb-6">Bu alanlar alıcıların karar vermesini kolaylaştırır</p>
+              <p className="text-text-muted text-sm mb-6">Bu alanlar alÄ±cÄ±larÄ±n karar vermesini kolaylaÅŸtÄ±rÄ±r</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {currentCategoryFields.map(field => (
@@ -742,7 +742,7 @@ export default function CreateListing() {
                         onChange={(e) => handleDetailChange(field.name, e.target.value)}
                         className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       >
-                        <option value="">Seçin...</option>
+                        <option value="">SeÃ§in...</option>
                         {field.options.map(opt => (
                           <option key={opt} value={opt}>{opt}</option>
                         ))}
@@ -768,7 +768,7 @@ export default function CreateListing() {
             <div className="mb-6">
               <label className="block text-white font-medium mb-3 flex items-center gap-2">
                 <Clock className="w-4 h-4 text-primary" />
-                Teslimat Süresi
+                Teslimat SÃ¼resi
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {DELIVERY_OPTIONS.map(option => (
@@ -800,7 +800,7 @@ export default function CreateListing() {
             <div>
               <label className="block text-white font-medium mb-3 flex items-center gap-2">
                 <Shield className="w-4 h-4 text-primary" />
-                Garanti Süresi
+                Garanti SÃ¼resi
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {GUARANTEE_OPTIONS.map(option => (
@@ -843,11 +843,11 @@ export default function CreateListing() {
               <div className="flex-1">
                 <label htmlFor="is_featured" className="text-white cursor-pointer block">
                   <span className="font-semibold flex items-center gap-2">
-                    Vitrin İlanı
-                    <span className="bg-primary text-white text-xs px-2 py-0.5 rounded">₺{FEATURED_PRICE}</span>
+                    Vitrin Ä°lanÄ±
+                    <span className="bg-primary text-white text-xs px-2 py-0.5 rounded">â‚º{FEATURED_PRICE}</span>
                   </span>
                   <span className="block text-text-muted text-sm mt-1">
-                    İlanınız ana sayfada öne çıkar. Bakiyenizden ₺{FEATURED_PRICE} düşer.
+                    Ä°lanÄ±nÄ±z ana sayfada Ã¶ne Ã§Ä±kar. Bakiyenizden â‚º{FEATURED_PRICE} dÃ¼ÅŸer.
                   </span>
                 </label>
                 {formData.is_featured && userBalance < FEATURED_PRICE && (
@@ -881,7 +881,7 @@ export default function CreateListing() {
             onClick={nextStep}
             className="flex-1 bg-primary hover:bg-primaryHover text-white py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2"
           >
-            İleri
+            Ä°leri
             <ChevronRight className="w-5 h-5" />
           </button>
         ) : (
@@ -892,7 +892,7 @@ export default function CreateListing() {
               className="px-6 py-3.5 bg-dark-700 hover:bg-dark-600 text-white rounded-xl font-semibold transition-all flex items-center gap-2"
             >
               <Eye className="w-5 h-5" />
-              Önizle
+              Ã–nizle
             </button>
             <button
               type="button"
@@ -901,21 +901,21 @@ export default function CreateListing() {
               className="flex-1 bg-primary hover:bg-primaryHover disabled:bg-dark-700 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2"
             >
               {loading ? (
-                <><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Yayınlanıyor...</>
+                <><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> YayÄ±nlanÄ±yor...</>
               ) : (
-                <><CheckCircle className="w-5 h-5" /> İlanı Yayınla</>
+                <><CheckCircle className="w-5 h-5" /> Ä°lanÄ± YayÄ±nla</>
               )}
             </button>
           </>
         )}
       </div>
 
-      {/* Önizleme Modal */}
+      {/* Ã–nizleme Modal */}
       {preview && (
         <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4" onClick={() => setPreview(false)}>
           <div className="bg-dark-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-auto border border-dark-700" onClick={(e) => e.stopPropagation()}>
             <div className="p-6 border-b border-dark-700 flex justify-between items-center sticky top-0 bg-dark-800">
-              <h2 className="text-xl font-bold text-white">İlan Önizleme</h2>
+              <h2 className="text-xl font-bold text-white">Ä°lan Ã–nizleme</h2>
               <button onClick={() => setPreview(false)} className="text-text-muted hover:text-white">
                 <X className="w-6 h-6" />
               </button>
@@ -924,7 +924,7 @@ export default function CreateListing() {
               {imagePreviews[0] && (
                 <img src={imagePreviews[0]} alt="Preview" className="w-full aspect-video object-cover rounded-xl mb-4" />
               )}
-              <h3 className="text-2xl font-bold text-white mb-2">{formData.title || 'Başlık yok'}</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">{formData.title || 'BaÅŸlÄ±k yok'}</h3>
               <div className="flex gap-2 mb-4 flex-wrap">
                 <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">{formData.category_name}</span>
                 <span className="bg-dark-700 text-text-muted px-3 py-1 rounded-full text-sm">
@@ -933,11 +933,11 @@ export default function CreateListing() {
                 </span>
                 <span className="bg-dark-700 text-text-muted px-3 py-1 rounded-full text-sm">
                   <Shield className="w-3 h-3 inline mr-1" />
-                  {formData.guarantee_days} gün garanti
+                  {formData.guarantee_days} gÃ¼n garanti
                 </span>
               </div>
               <div className="text-3xl font-bold text-primary mb-4">
-                ₺{parseFloat(formData.price || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+                â‚º{parseFloat(formData.price || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
               </div>
               {formData.description && (
                 <p className="text-text-muted leading-relaxed mb-4">{formData.description}</p>

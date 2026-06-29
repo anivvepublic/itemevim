@@ -8,20 +8,20 @@ import {
 import { supabase } from '../lib/supabase';
 import { useToast } from '../context/ToastContext';
 
-// İSİM RENKLERİ
+// Ä°SÄ°M RENKLERÄ°
 const NAME_COLORS = [
   { id: 'white', value: '#ffffff', label: 'Beyaz' },
-  { id: 'red', value: '#ef4444', label: 'Kırmızı' },
+  { id: 'red', value: '#ef4444', label: 'KÄ±rmÄ±zÄ±' },
   { id: 'orange', value: '#f97316', label: 'Turuncu' },
-  { id: 'yellow', value: '#eab308', label: 'Sarı' },
-  { id: 'green', value: '#22c55e', label: 'Yeşil' },
+  { id: 'yellow', value: '#eab308', label: 'SarÄ±' },
+  { id: 'green', value: '#22c55e', label: 'YeÅŸil' },
   { id: 'cyan', value: '#06b6d4', label: 'Cyan' },
   { id: 'blue', value: '#3b82f6', label: 'Mavi' },
   { id: 'purple', value: '#a855f7', label: 'Mor' },
   { id: 'pink', value: '#ec4899', label: 'Pembe' }
 ];
 
-// İSİM RENDERER
+// Ä°SÄ°M RENDERER
 function StyledName({ name, color, size = 'text-3xl' }) {
   return (
     <span className={`${size} font-bold`} style={{ color: color || '#ffffff' }}>
@@ -79,7 +79,7 @@ export default function ProfilePage() {
           setUserData(user);
           setUserBalance(user.balance || 0);
           
-          // Profil ayarlarını güvenli şekilde yükle
+          // Profil ayarlarÄ±nÄ± gÃ¼venli ÅŸekilde yÃ¼kle
           let settings = {};
           try {
             if (typeof user.profile_settings === 'string') {
@@ -126,17 +126,17 @@ export default function ProfilePage() {
   };
 
   const handleDeleteListing = async (listingId) => {
-    if (!window.confirm('Bu ilanı silmek istediğinize emin misiniz?')) return;
+    if (!window.confirm('Bu ilanÄ± silmek istediÄŸinize emin misiniz?')) return;
 
     try {
       const res = await fetch(`/api/listings/${listingId}`, {
         method: 'DELETE'
       });
 
-      if (!res.ok) throw new Error('Silme başarısız');
+      if (!res.ok) throw new Error('Silme baÅŸarÄ±sÄ±z');
 
       setUserListings(prev => prev.filter(l => l.id !== listingId));
-      addToast('İlan silindi', 'success');
+      addToast('Ä°lan silindi', 'success');
     } catch (err) {
       addToast(err.message, 'error');
     }
@@ -147,7 +147,7 @@ export default function ProfilePage() {
     if (!file) return;
     
     if (file.size > 2 * 1024 * 1024) {
-      addToast('Avatar 2MB\'dan küçük olmalı', 'error');
+      addToast('Avatar 2MB\'dan kÃ¼Ã§Ã¼k olmalÄ±', 'error');
       return;
     }
 
@@ -166,9 +166,9 @@ export default function ProfilePage() {
         .getPublicUrl(fileName);
 
       setTempSettings(prev => ({ ...prev, avatarUrl: publicUrl }));
-      addToast('Avatar yüklendi', 'success', 2000);
+      addToast('Avatar yÃ¼klendi', 'success', 2000);
     } catch (err) {
-      addToast('Avatar yükleme hatası: ' + err.message, 'error');
+      addToast('Avatar yÃ¼kleme hatasÄ±: ' + err.message, 'error');
     }
   };
 
@@ -188,7 +188,7 @@ export default function ProfilePage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Kaydetme başarısız');
+      if (!res.ok) throw new Error(data.error || 'Kaydetme baÅŸarÄ±sÄ±z');
 
       setUserData(prev => ({
         ...prev,
@@ -199,7 +199,7 @@ export default function ProfilePage() {
         }
       }));
 
-      addToast('Profil güncellendi!', 'success');
+      addToast('Profil gÃ¼ncellendi!', 'success');
       setEditing(false);
     } catch (err) {
       addToast(err.message, 'error');
@@ -212,7 +212,7 @@ export default function ProfilePage() {
     return (
       <div className="text-center py-16">
         <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-text-muted mt-4">Yükleniyor...</p>
+        <p className="text-text-muted mt-4">YÃ¼kleniyor...</p>
       </div>
     );
   }
@@ -221,7 +221,7 @@ export default function ProfilePage() {
   const isVerifiedSeller = userData.verified;
 
   const tabs = [
-    { id: 'listings', label: 'İlanlarım', icon: <Package className="w-4 h-4" /> },
+    { id: 'listings', label: 'Ä°lanlarÄ±m', icon: <Package className="w-4 h-4" /> },
     { id: 'settings', label: 'Ayarlar', icon: <Settings className="w-4 h-4" /> },
   ];
 
@@ -229,10 +229,10 @@ export default function ProfilePage() {
     <div className="max-w-5xl mx-auto px-4 py-8">
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
-      {/* PROFİL KARTI */}
+      {/* PROFÄ°L KARTI */}
       <div className="relative rounded-2xl border border-dark-700 bg-dark-800 px-6 pb-6">
         {/* Avatar */}
         <div className="flex justify-center pt-8 pb-4">
@@ -251,14 +251,14 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* İsim */}
+        {/* Ä°sim */}
         <div className="text-center mt-4">
           <StyledName name={username} color={tempSettings.nameColor} size="text-3xl md:text-4xl" />
           
           {isVerifiedSeller && (
             <div className="flex items-center justify-center gap-1 text-primary text-sm mt-2">
               <CheckCircle className="w-4 h-4" />
-              <span className="font-medium">Onaylı Satıcı</span>
+              <span className="font-medium">OnaylÄ± SatÄ±cÄ±</span>
             </div>
           )}
 
@@ -275,30 +275,30 @@ export default function ProfilePage() {
               {tempSettings.bio}
             </p>
           ) : (
-            <p className="text-center text-text-muted/50 italic text-sm">Henüz bio eklenmemiş</p>
+            <p className="text-center text-text-muted/50 italic text-sm">HenÃ¼z bio eklenmemiÅŸ</p>
           )}
         </div>
 
-        {/* Özelleştir Butonu */}
+        {/* Ã–zelleÅŸtir Butonu */}
         <div className="flex justify-center mt-6">
           <button
             onClick={() => setEditing(true)}
             className="bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded-xl font-medium flex items-center gap-2 transition-all"
           >
             <Paintbrush className="w-4 h-4" />
-            Profili Özelleştir
+            Profili Ã–zelleÅŸtir
           </button>
         </div>
       </div>
 
-      {/* İSTATİSTİKLER */}
+      {/* Ä°STATÄ°STÄ°KLER */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
         <div className="bg-dark-800 rounded-xl p-4 border border-dark-700">
-          <div className="text-text-muted text-sm mb-1">Toplam İlan</div>
+          <div className="text-text-muted text-sm mb-1">Toplam Ä°lan</div>
           <div className="text-2xl font-bold text-white">{userListings.length}</div>
         </div>
         <div className="bg-dark-800 rounded-xl p-4 border border-dark-700">
-          <div className="text-text-muted text-sm mb-1">Aktif İlan</div>
+          <div className="text-text-muted text-sm mb-1">Aktif Ä°lan</div>
           <div className="text-2xl font-bold text-white">
             {userListings.filter(l => l.status === 'active').length}
           </div>
@@ -311,16 +311,16 @@ export default function ProfilePage() {
               {sellerRating.avgRating}
             </div>
           ) : (
-            <div className="text-base font-bold text-text-muted">Henüz yok</div>
+            <div className="text-base font-bold text-text-muted">HenÃ¼z yok</div>
           )}
         </div>
         <div className="bg-dark-800 rounded-xl p-4 border border-dark-700">
           <div className="text-text-muted text-sm mb-1">Bakiye</div>
-          <div className="text-2xl font-bold text-primary">₺{userBalance.toFixed(2)}</div>
+          <div className="text-2xl font-bold text-primary">â‚º{userBalance.toFixed(2)}</div>
         </div>
       </div>
 
-      {/* SEKME İÇERİKLERİ */}
+      {/* SEKME Ä°Ã‡ERÄ°KLERÄ° */}
       <div className="flex gap-2 mt-6 border-b border-dark-700">
         {tabs.map(tab => (
           <button
@@ -342,12 +342,12 @@ export default function ProfilePage() {
         {activeTab === 'listings' && (
           <div>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-white">İlanlarım</h2>
+              <h2 className="text-xl font-bold text-white">Ä°lanlarÄ±m</h2>
               <Link 
                 to="/create-listing"
                 className="bg-primary hover:bg-primaryHover text-white px-4 py-2 rounded-lg text-sm font-medium transition-all"
               >
-                + Yeni İlan
+                + Yeni Ä°lan
               </Link>
             </div>
 
@@ -358,12 +358,12 @@ export default function ProfilePage() {
             ) : userListings.length === 0 ? (
               <div className="bg-dark-800 rounded-xl border border-dark-700 p-12 text-center">
                 <Package className="w-12 h-12 text-text-muted mx-auto mb-4" />
-                <p className="text-text-muted mb-4">Henüz ilanınız yok.</p>
+                <p className="text-text-muted mb-4">HenÃ¼z ilanÄ±nÄ±z yok.</p>
                 <Link 
                   to="/create-listing"
                   className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded-lg font-medium transition-all"
                 >
-                  İlk İlanını Ver
+                  Ä°lk Ä°lanÄ±nÄ± Ver
                 </Link>
               </div>
             ) : (
@@ -384,7 +384,7 @@ export default function ProfilePage() {
                         {listing.title}
                       </Link>
                       <p className="text-text-muted text-sm mt-1">
-                        {listing.category_slug?.toUpperCase()} • ₺{listing.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+                        {listing.category_slug?.toUpperCase()} â€¢ â‚º{listing.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
                       </p>
                     </div>
 
@@ -394,7 +394,7 @@ export default function ProfilePage() {
                         className="bg-dark-700 hover:bg-primary/20 hover:text-primary text-white px-3 py-2 rounded-lg text-sm transition-all flex items-center gap-1"
                       >
                         <Edit3 className="w-4 h-4" />
-                        Düzenle
+                        DÃ¼zenle
                       </Link>
                       <button
                         onClick={() => handleDeleteListing(listing.id)}
@@ -413,11 +413,11 @@ export default function ProfilePage() {
 
         {activeTab === 'settings' && (
           <div className="bg-dark-800 rounded-xl border border-dark-700 p-8">
-            <h2 className="text-xl font-bold text-white mb-6">Hesap Ayarları</h2>
+            <h2 className="text-xl font-bold text-white mb-6">Hesap AyarlarÄ±</h2>
             
             <div className="space-y-6">
               <div>
-                <label className="block text-white font-medium mb-2">Kullanıcı Adı</label>
+                <label className="block text-white font-medium mb-2">KullanÄ±cÄ± AdÄ±</label>
                 <input type="text" value={username} disabled className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 opacity-60" />
               </div>
 
@@ -429,7 +429,7 @@ export default function ProfilePage() {
               <div className="pt-4 border-t border-dark-700">
                 <button onClick={handleLogout} className="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-6 py-2.5 rounded-xl font-medium transition-all flex items-center gap-2">
                   <LogOut className="w-4 h-4" />
-                  Çıkış Yap
+                  Ã‡Ä±kÄ±ÅŸ Yap
                 </button>
               </div>
             </div>
@@ -437,7 +437,7 @@ export default function ProfilePage() {
         )}
       </div>
 
-      {/* ÖZELLEŞTİRME MODAL */}
+      {/* Ã–ZELLEÅžTÄ°RME MODAL */}
       {editing && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setEditing(false)}>
           <div className="bg-dark-800 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden border border-dark-700 shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
@@ -448,8 +448,8 @@ export default function ProfilePage() {
                   <Paintbrush className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white">Profili Özelleştir</h2>
-                  <p className="text-text-muted text-xs">Kendi tarzını oluştur</p>
+                  <h2 className="text-xl font-bold text-white">Profili Ã–zelleÅŸtir</h2>
+                  <p className="text-text-muted text-xs">Kendi tarzÄ±nÄ± oluÅŸtur</p>
                 </div>
               </div>
               <button onClick={() => setEditing(false)} className="text-text-muted hover:text-white transition-colors">
@@ -459,11 +459,11 @@ export default function ProfilePage() {
 
             {/* Body */}
             <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
-              {/* Sol: Önizleme */}
+              {/* Sol: Ã–nizleme */}
               <div className="p-6 border-r border-dark-700 bg-dark-900 overflow-auto">
                 <div className="text-text-muted text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
                   <Sparkles className="w-3 h-3" />
-                  Canlı Önizleme
+                  CanlÄ± Ã–nizleme
                 </div>
                 
                 <div className="rounded-xl overflow-hidden border border-dark-700 shadow-xl bg-dark-800">
@@ -491,12 +491,12 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Sağ: Kontrol */}
+              {/* SaÄŸ: Kontrol */}
               <div className="flex flex-col overflow-hidden">
                 <div className="border-b border-dark-700 bg-dark-900 overflow-x-auto">
                   <div className="flex min-w-max">
                     {[
-                      { id: 'name', icon: Type, label: 'İsim Rengi' },
+                      { id: 'name', icon: Type, label: 'Ä°sim Rengi' },
                       { id: 'avatar', icon: User, label: 'Avatar' },
                       { id: 'bio', icon: Edit3, label: 'Bio' }
                     ].map(tab => {
@@ -520,7 +520,7 @@ export default function ProfilePage() {
                 <div className="flex-1 overflow-auto p-6">
                   {editTab === 'name' && (
                     <div>
-                      <h3 className="text-white font-semibold mb-3">İsim Rengi</h3>
+                      <h3 className="text-white font-semibold mb-3">Ä°sim Rengi</h3>
                       <div className="grid grid-cols-5 sm:grid-cols-9 gap-2">
                         {NAME_COLORS.map(color => (
                           <button
@@ -539,10 +539,10 @@ export default function ProfilePage() {
 
                   {editTab === 'avatar' && (
                     <div>
-                      <h3 className="text-white font-semibold mb-3">Avatar Yükle</h3>
+                      <h3 className="text-white font-semibold mb-3">Avatar YÃ¼kle</h3>
                       <button onClick={() => avatarInputRef.current?.click()} className="w-full h-32 rounded-xl border-2 border-dashed border-dark-700 hover:border-primary bg-dark-900 flex flex-col items-center justify-center gap-2 text-text-muted hover:text-primary transition-all">
                         <Upload className="w-8 h-8" />
-                        <span className="text-sm font-medium">Avatar Yükle</span>
+                        <span className="text-sm font-medium">Avatar YÃ¼kle</span>
                         <span className="text-xs">PNG, JPG (Max 2MB)</span>
                       </button>
                       
@@ -551,7 +551,7 @@ export default function ProfilePage() {
                           <img src={tempSettings.avatarUrl} alt="Avatar" className="w-16 h-16 rounded-full object-cover border-2 border-primary" />
                           <div className="flex-1">
                             <p className="text-white text-sm">Mevcut avatar</p>
-                            <button onClick={() => setTempSettings(prev => ({ ...prev, avatarUrl: '' }))} className="text-red-400 text-xs hover:underline">Kaldır</button>
+                            <button onClick={() => setTempSettings(prev => ({ ...prev, avatarUrl: '' }))} className="text-red-400 text-xs hover:underline">KaldÄ±r</button>
                           </div>
                         </div>
                       )}
@@ -564,7 +564,7 @@ export default function ProfilePage() {
                       <textarea
                         value={tempSettings.bio}
                         onChange={(e) => setTempSettings(prev => ({ ...prev, bio: e.target.value }))}
-                        placeholder="Kendini tanıt..."
+                        placeholder="Kendini tanÄ±t..."
                         rows="6"
                         maxLength={300}
                         className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted resize-none"
@@ -578,7 +578,7 @@ export default function ProfilePage() {
 
             {/* Footer */}
             <div className="p-4 border-t border-dark-700 bg-dark-900 flex items-center justify-between gap-3">
-              <button onClick={() => setEditing(false)} className="px-6 py-2.5 bg-dark-700 hover:bg-dark-600 text-white rounded-xl font-medium transition-all">İptal</button>
+              <button onClick={() => setEditing(false)} className="px-6 py-2.5 bg-dark-700 hover:bg-dark-600 text-white rounded-xl font-medium transition-all">Ä°ptal</button>
               <button onClick={handleSaveProfile} disabled={saving} className="px-6 py-2.5 bg-primary hover:bg-primaryHover disabled:bg-dark-700 disabled:cursor-not-allowed text-white rounded-xl font-semibold transition-all flex items-center gap-2">
                 {saving ? (
                   <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Kaydediliyor...</>

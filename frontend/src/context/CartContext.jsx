@@ -12,7 +12,7 @@ export function useCart() {
 export function CartProvider({ children }) {
   const { addToast } = useToast();
   
-  // ✅ FIX: Initial state'i localStorage'dan oku (F5'te kaybolmaz)
+  // âœ… FIX: Initial state'i localStorage'dan oku (F5'te kaybolmaz)
   const [cart, setCart] = useState(() => {
     try {
       const saved = localStorage.getItem('itemevim_cart');
@@ -23,7 +23,7 @@ export function CartProvider({ children }) {
     }
   });
 
-  // Değişiklikte localStorage'a kaydet
+  // DeÄŸiÅŸiklikte localStorage'a kaydet
   useEffect(() => {
     localStorage.setItem('itemevim_cart', JSON.stringify(cart));
   }, [cart]);
@@ -41,12 +41,12 @@ export function CartProvider({ children }) {
       addedAt: new Date().toISOString()
     }]);
     
-    addToast('Sepete eklendi 🛒', 'success', 2000);
+    addToast('Sepete eklendi ðŸ›’', 'success', 2000);
   };
 
   const removeFromCart = (listingId) => {
     setCart(prev => prev.filter(item => item.id !== listingId));
-    addToast('Sepetten çıkarıldı', 'info', 2000);
+    addToast('Sepetten Ã§Ä±karÄ±ldÄ±', 'info', 2000);
   };
 
   const clearCart = () => {

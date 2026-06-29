@@ -11,12 +11,12 @@ export default function AllCategoriesPage() {
   const [activeFilter, setActiveFilter] = useState(groupParam);
   const [loading, setLoading] = useState(true);
 
-  // URL parametresi değiştiğinde activeFilter'ı güncelle
+  // URL parametresi deÄŸiÅŸtiÄŸinde activeFilter'Ä± gÃ¼ncelle
   useEffect(() => {
     setActiveFilter(groupParam);
   }, [groupParam]);
 
-  // Kategorileri yükle
+  // Kategorileri yÃ¼kle
   useEffect(() => {
     fetch('/api/categories/all')
       .then(res => res.json())
@@ -29,7 +29,7 @@ export default function AllCategoriesPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Filtre değiştiğinde URL'i güncelle
+  // Filtre deÄŸiÅŸtiÄŸinde URL'i gÃ¼ncelle
   const handleFilterChange = (newFilter) => {
     setActiveFilter(newFilter);
     setSearchParams({ group: newFilter });
@@ -51,7 +51,7 @@ export default function AllCategoriesPage() {
     <div>
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
       {/* Hero Banner */}
@@ -63,19 +63,19 @@ export default function AllCategoriesPage() {
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-3">
             <Sparkles className="w-5 h-5 text-primary" />
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">Tüm Kategoriler</span>
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">TÃ¼m Kategoriler</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 leading-normal">
-            Dijital Dünyanın
+            Dijital DÃ¼nyanÄ±n
             <span className="block bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Tüm Kategorileri
+              TÃ¼m Kategorileri
             </span>
           </h1>
           <p className="text-text-muted text-base md:text-lg max-w-2xl">
-            Oyun hesaplarından sosyal medya profillerine, dijital itemlerden premium üyeliklere kadar binlerce ürün tek bir yerde.
+            Oyun hesaplarÄ±ndan sosyal medya profillerine, dijital itemlerden premium Ã¼yeliklere kadar binlerce Ã¼rÃ¼n tek bir yerde.
           </p>
 
-          {/* İstatistikler */}
+          {/* Ä°statistikler */}
           <div className="flex flex-wrap gap-8 mt-8 pt-8 border-t border-white/10">
             <div>
               <div className="text-3xl font-bold text-white">{categories.length}</div>
@@ -83,7 +83,7 @@ export default function AllCategoriesPage() {
             </div>
             <div>
               <div className="text-3xl font-bold text-white">{totalListings.toLocaleString('tr-TR')}+</div>
-              <div className="text-text-muted text-sm mt-1">Aktif İlan</div>
+              <div className="text-text-muted text-sm mt-1">Aktif Ä°lan</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-white">7/24</div>
@@ -108,7 +108,7 @@ export default function AllCategoriesPage() {
             />
           </div>
 
-          {/* Filtre Butonları */}
+          {/* Filtre ButonlarÄ± */}
           <div className="flex gap-2">
             <button
               onClick={() => handleFilterChange('all')}
@@ -118,7 +118,7 @@ export default function AllCategoriesPage() {
                   : 'bg-dark-700 text-text-muted hover:text-white hover:bg-dark-600'
               }`}
             >
-              Tümü
+              TÃ¼mÃ¼
             </button>
             <button
               onClick={() => handleFilterChange('game')}
@@ -146,11 +146,11 @@ export default function AllCategoriesPage() {
         </div>
       </div>
 
-      {/* Sonuç Sayısı */}
+      {/* SonuÃ§ SayÄ±sÄ± */}
       {searchQuery && (
         <div className="mb-6">
           <p className="text-text-muted">
-            "<span className="text-white font-semibold">{searchQuery}</span>" için <span className="text-white font-semibold">{filteredCategories.length}</span> sonuç bulundu
+            "<span className="text-white font-semibold">{searchQuery}</span>" iÃ§in <span className="text-white font-semibold">{filteredCategories.length}</span> sonuÃ§ bulundu
           </p>
         </div>
       )}
@@ -159,12 +159,12 @@ export default function AllCategoriesPage() {
       {loading ? (
         <div className="text-center py-16">
           <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-text-muted mt-4">Kategoriler yükleniyor...</p>
+          <p className="text-text-muted mt-4">Kategoriler yÃ¼kleniyor...</p>
         </div>
       ) : filteredCategories.length === 0 ? (
         <div className="bg-dark-800 rounded-xl border border-dark-700 p-12 text-center">
-          <p className="text-text-muted text-lg">Kategori bulunamadı.</p>
-          <p className="text-text-muted text-sm mt-2">Farklı bir arama terimi deneyin.</p>
+          <p className="text-text-muted text-lg">Kategori bulunamadÄ±.</p>
+          <p className="text-text-muted text-sm mt-2">FarklÄ± bir arama terimi deneyin.</p>
         </div>
       ) : (
         <div className="space-y-12">
@@ -178,7 +178,7 @@ export default function AllCategoriesPage() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Oyun Kategorileri</h2>
-                    <p className="text-text-muted text-sm">Hesaplar, itemler ve dijital oyun ürünleri</p>
+                    <p className="text-text-muted text-sm">Hesaplar, itemler ve dijital oyun Ã¼rÃ¼nleri</p>
                   </div>
                 </div>
                 <span className="text-text-muted text-sm hidden md:block">
@@ -204,7 +204,7 @@ export default function AllCategoriesPage() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Sosyal Medya & Dijital</h2>
-                    <p className="text-text-muted text-sm">Hesaplar, takipçiler ve dijital hizmetler</p>
+                    <p className="text-text-muted text-sm">Hesaplar, takipÃ§iler ve dijital hizmetler</p>
                   </div>
                 </div>
                 <span className="text-text-muted text-sm hidden md:block">
@@ -225,9 +225,9 @@ export default function AllCategoriesPage() {
   );
 }
 
-// Kategori Kartı - Emojisiz, Temiz Tasarım
+// Kategori KartÄ± - Emojisiz, Temiz TasarÄ±m
 function CategoryCard({ category, type }) {
-  // Her kategori için özel gradient renk
+  // Her kategori iÃ§in Ã¶zel gradient renk
   const getGradient = (slug, groupType) => {
     if (groupType === 'social') {
       const gradients = {
@@ -300,14 +300,14 @@ function CategoryCard({ category, type }) {
       {/* Gradient Top Line */}
       <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${getGradient(category.slug, category.category_group)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
 
-      {/* İçerik */}
+      {/* Ä°Ã§erik */}
       <div className="relative z-10">
-        {/* İsim */}
+        {/* Ä°sim */}
         <h3 className="text-white font-bold text-sm md:text-base mb-2 group-hover:text-white transition-colors truncate">
           {category.name}
         </h3>
         
-        {/* İlan Sayısı */}
+        {/* Ä°lan SayÄ±sÄ± */}
         <div className="flex items-center justify-between">
           <p className="text-text-muted text-xs">
             {(category.listing_count || 0).toLocaleString('tr-TR')} ilan

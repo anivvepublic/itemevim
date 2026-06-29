@@ -26,7 +26,7 @@ export default function MessagesPage() {
   const [otherUserInfo, setOtherUserInfo] = useState(null);
   const [isMobileChatOpen, setIsMobileChatOpen] = useState(false);
   const [initializingChat, setInitializingChat] = useState(false);
-  const [realtimeStatus, setRealtimeStatus] = useState('Bağlanıyor...');
+  const [realtimeStatus, setRealtimeStatus] = useState('BaÄŸlanÄ±yor...');
   
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -35,7 +35,7 @@ export default function MessagesPage() {
   const selectedConversationRef = useRef(null);
   const chatContainerRef = useRef(null);
 
-  // Kullanıcı oturumu
+  // KullanÄ±cÄ± oturumu
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -61,13 +61,13 @@ export default function MessagesPage() {
     checkAuth();
   }, [navigate]);
 
-  // Konuşmaları yükle
+  // KonuÅŸmalarÄ± yÃ¼kle
   useEffect(() => {
     if (!currentUserId) return;
     loadConversations();
   }, [currentUserId]);
 
-  // URL'den gelen kullanıcı ile sohbet başlat
+  // URL'den gelen kullanÄ±cÄ± ile sohbet baÅŸlat
   useEffect(() => {
     if (!currentUserId || !targetUserId) return;
     if (conversations.length === 0 && loading) return;
@@ -86,7 +86,7 @@ export default function MessagesPage() {
     setInitializingChat(true);
     try {
       const res = await fetch(`/api/users/${userId}/info`);
-      if (!res.ok) throw new Error('Kullanıcı bulunamadı');
+      if (!res.ok) throw new Error('KullanÄ±cÄ± bulunamadÄ±');
       const userInfo = await res.json();
       
       const newConversation = {
@@ -104,7 +104,7 @@ export default function MessagesPage() {
       setIsMobileChatOpen(true);
     } catch (err) {
       console.error('Initialize chat error:', err);
-      addToast('Kullanıcı bulunamadı', 'error');
+      addToast('KullanÄ±cÄ± bulunamadÄ±', 'error');
     } finally {
       setInitializingChat(false);
     }
@@ -174,7 +174,7 @@ export default function MessagesPage() {
     };
   }, [currentUserId]);
 
-  // selectedConversation değiştiğinde ref'i güncelle ve mesajları yükle
+  // selectedConversation deÄŸiÅŸtiÄŸinde ref'i gÃ¼ncelle ve mesajlarÄ± yÃ¼kle
   useEffect(() => {
     selectedConversationRef.current = selectedConversation;
     
@@ -200,7 +200,7 @@ export default function MessagesPage() {
     }
   }, [selectedConversation, currentUserId]);
 
-  // Son görülme güncelleme
+  // Son gÃ¶rÃ¼lme gÃ¼ncelleme
   useEffect(() => {
     if (!currentUserId) return;
 
@@ -283,7 +283,7 @@ export default function MessagesPage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Mesaj gönderilemedi');
+      if (!res.ok) throw new Error(data.error || 'Mesaj gÃ¶nderilemedi');
 
       setMessages(prev => [...prev, {
         ...data,
@@ -318,7 +318,7 @@ export default function MessagesPage() {
     }
   };
 
-  // Profil fotoğrafı helper'ı
+  // Profil fotoÄŸrafÄ± helper'Ä±
   const getAvatarUrl = (user) => {
     if (!user) return null;
     return user.avatar_url || user.avatar || null;
@@ -332,10 +332,10 @@ export default function MessagesPage() {
     const hours = Math.floor(diff / 3600000);
     const days = Math.floor(diff / 86400000);
 
-    if (minutes < 1) return 'Şimdi';
+    if (minutes < 1) return 'Åžimdi';
     if (minutes < 60) return `${minutes} dk`;
     if (hours < 24) return `${hours} sa`;
-    if (days < 7) return `${days} gün`;
+    if (days < 7) return `${days} gÃ¼n`;
     return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
   };
 
@@ -354,9 +354,9 @@ export default function MessagesPage() {
     const diff = now - d;
     const minutes = Math.floor(diff / 60000);
 
-    if (minutes < 5) return 'Çevrimiçi';
-    if (minutes < 60) return `${minutes} dakika önce`;
-    if (minutes < 1440) return `${Math.floor(minutes / 60)} saat önce`;
+    if (minutes < 5) return 'Ã‡evrimiÃ§i';
+    if (minutes < 60) return `${minutes} dakika Ã¶nce`;
+    if (minutes < 1440) return `${Math.floor(minutes / 60)} saat Ã¶nce`;
     return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
   };
 
@@ -368,7 +368,7 @@ export default function MessagesPage() {
     return (
       <div className="text-center py-16">
         <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-text-muted mt-4">Yükleniyor...</p>
+        <p className="text-text-muted mt-4">YÃ¼kleniyor...</p>
       </div>
     );
   }
@@ -377,7 +377,7 @@ export default function MessagesPage() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
       {/* Realtime Durumu */}
@@ -402,7 +402,7 @@ export default function MessagesPage() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Konuşma ara..."
+                  placeholder="KonuÅŸma ara..."
                   className="w-full bg-dark-900 text-white pl-10 pr-4 py-2.5 rounded-lg border border-dark-700 focus:outline-none focus:border-primary text-sm"
                 />
               </div>
@@ -417,10 +417,10 @@ export default function MessagesPage() {
                 <div className="text-center py-16 px-4">
                   <MessageCircle className="w-12 h-12 text-text-muted mx-auto mb-3 opacity-30" />
                   <p className="text-text-muted text-sm">
-                    {searchQuery ? 'Sonuç bulunamadı' : 'Henüz konuşma yok'}
+                    {searchQuery ? 'SonuÃ§ bulunamadÄ±' : 'HenÃ¼z konuÅŸma yok'}
                   </p>
                   <p className="text-text-muted text-xs mt-2">
-                    Bir ilandan "Mesaj Gönder" butonuna tıklayarak başlayabilirsin
+                    Bir ilandan "Mesaj GÃ¶nder" butonuna tÄ±klayarak baÅŸlayabilirsin
                   </p>
                 </div>
               ) : (
@@ -456,14 +456,14 @@ export default function MessagesPage() {
                       <div className="flex-1 min-w-0 text-left">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-white font-semibold text-sm truncate">
-                            {conv.user?.username || 'Kullanıcı'}
+                            {conv.user?.username || 'KullanÄ±cÄ±'}
                           </span>
                           <span className="text-text-muted text-xs flex-shrink-0 ml-2">
                             {formatTime(conv.lastMessageTime)}
                           </span>
                         </div>
                         <p className="text-text-muted text-xs truncate">
-                          {conv.lastMessage || 'Henüz mesaj yok'}
+                          {conv.lastMessage || 'HenÃ¼z mesaj yok'}
                         </p>
                       </div>
                     </button>
@@ -473,19 +473,19 @@ export default function MessagesPage() {
             </div>
           </div>
 
-          {/* SAĞ PANEL */}
+          {/* SAÄž PANEL */}
           <div className={`flex-1 flex flex-col ${!isMobileChatOpen ? 'hidden md:flex' : 'flex'}`}>
             {!selectedConversation ? (
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center">
                   <MessageCircle className="w-16 h-16 text-text-muted mx-auto mb-4 opacity-20" />
-                  <p className="text-text-muted text-lg">Bir konuşma seçin</p>
-                  <p className="text-text-muted text-sm mt-2">Sol panelden bir konuşma seçin veya bir ilandan mesaj gönderin</p>
+                  <p className="text-text-muted text-lg">Bir konuÅŸma seÃ§in</p>
+                  <p className="text-text-muted text-sm mt-2">Sol panelden bir konuÅŸma seÃ§in veya bir ilandan mesaj gÃ¶nderin</p>
                 </div>
               </div>
             ) : (
               <>
-                {/* Chat Header - MOBİL İÇİN TEMİZLENDİ */}
+                {/* Chat Header - MOBÄ°L Ä°Ã‡Ä°N TEMÄ°ZLENDÄ° */}
                 <div className="p-4 border-b border-dark-700 flex items-center justify-between">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
                     <button
@@ -495,7 +495,7 @@ export default function MessagesPage() {
                       <ArrowLeft className="w-5 h-5" />
                     </button>
                     
-                    {/* Avatar - Profil fotoğrafı varsa göster */}
+                    {/* Avatar - Profil fotoÄŸrafÄ± varsa gÃ¶ster */}
                     <div className="w-10 h-10 rounded-full overflow-hidden bg-dark-600 flex-shrink-0">
                       {otherUserInfo && getAvatarUrl(otherUserInfo) ? (
                         <img src={getAvatarUrl(otherUserInfo)} alt={otherUserInfo.username} className="w-full h-full object-cover" />
@@ -519,14 +519,14 @@ export default function MessagesPage() {
                     </div>
                   </div>
 
-                  {/* Sağ taraf - Sadece "Profili Gör" butonu */}
+                  {/* SaÄŸ taraf - Sadece "Profili GÃ¶r" butonu */}
                   <button
                     onClick={handleViewProfile}
                     className="flex items-center gap-1.5 px-3 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg transition-colors text-text-muted hover:text-white text-xs font-medium flex-shrink-0 ml-2"
-                    title="Profili Gör"
+                    title="Profili GÃ¶r"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Profili Gör</span>
+                    <span className="hidden sm:inline">Profili GÃ¶r</span>
                   </button>
                 </div>
 
@@ -544,9 +544,9 @@ export default function MessagesPage() {
                         )}
                       </div>
                       <p className="text-white font-medium">
-                        {selectedConversation.user?.username} ile konuşma başlattın
+                        {selectedConversation.user?.username} ile konuÅŸma baÅŸlattÄ±n
                       </p>
-                      <p className="text-text-muted text-sm mt-2">İlk mesajı sen gönder!</p>
+                      <p className="text-text-muted text-sm mt-2">Ä°lk mesajÄ± sen gÃ¶nder!</p>
                     </div>
                   ) : (
                     messages.map((msg, index) => {
@@ -598,7 +598,7 @@ export default function MessagesPage() {
                   <div ref={messagesEndRef} />
                 </div>
 
-                {/* Input Alanı */}
+                {/* Input AlanÄ± */}
                 <form onSubmit={handleSendMessage} className="p-4 border-t border-dark-700 bg-dark-800">
                   <div className="flex items-center gap-2">
                     <input
@@ -606,7 +606,7 @@ export default function MessagesPage() {
                       type="text"
                       value={newMessage}
                       onChange={(e) => setNewMessage(e.target.value)}
-                      placeholder={`${selectedConversation.user?.username} kişisine mesaj yaz...`}
+                      placeholder={`${selectedConversation.user?.username} kiÅŸisine mesaj yaz...`}
                       className="flex-1 bg-dark-900 text-white px-4 py-2.5 rounded-full border border-dark-700 focus:outline-none focus:border-primary text-sm"
                       disabled={sending}
                     />

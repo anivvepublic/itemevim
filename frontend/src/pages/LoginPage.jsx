@@ -32,7 +32,7 @@ export default function LoginPage() {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const debounceTimer = useRef(null);
 
-  // Kullanıcı adı kontrolü (debounce)
+  // KullanÄ±cÄ± adÄ± kontrolÃ¼ (debounce)
   useEffect(() => {
     if (!formData.username || formData.username.length < 3) {
       setUsernameStatus({ checking: false, available: null, suggestions: [] });
@@ -70,7 +70,7 @@ export default function LoginPage() {
     };
   }, [formData.username]);
 
-  // Şifre gücü hesapla
+  // Åžifre gÃ¼cÃ¼ hesapla
   useEffect(() => {
     const pwd = formData.password;
     let strength = 0;
@@ -104,32 +104,32 @@ export default function LoginPage() {
 
   const handleSuggestionClick = (suggestion) => {
     setFormData(prev => ({ ...prev, username: suggestion }));
-    addToast(`"${suggestion}" seçildi`, 'info', 2000);
+    addToast(`"${suggestion}" seÃ§ildi`, 'info', 2000);
   };
 
   const validateForm = () => {
     if (!isLogin) {
       if (formData.username.length < 3) {
-        addToast('Kullanıcı adı en az 3 karakter olmalıdır', 'warning');
+        addToast('KullanÄ±cÄ± adÄ± en az 3 karakter olmalÄ±dÄ±r', 'warning');
         return false;
       }
       if (!usernameStatus.available) {
-        addToast('Bu kullanıcı adı zaten alınmış', 'error');
+        addToast('Bu kullanÄ±cÄ± adÄ± zaten alÄ±nmÄ±ÅŸ', 'error');
         return false;
       }
       if (formData.password !== formData.confirmPassword) {
-        addToast('Şifreler eşleşmiyor', 'error');
+        addToast('Åžifreler eÅŸleÅŸmiyor', 'error');
         return false;
       }
       if (passwordStrength < 3) {
-        addToast('Şifreniz çok zayıf, daha güçlü bir şifre kullanın', 'warning');
+        addToast('Åžifreniz Ã§ok zayÄ±f, daha gÃ¼Ã§lÃ¼ bir ÅŸifre kullanÄ±n', 'warning');
         return false;
       }
-      // SÖZLEŞME KONTROLÜ
+      // SÃ–ZLEÅžME KONTROLÃœ
       if (!termsAccepted) {
         setTermsShake(true);
         setTimeout(() => setTermsShake(false), 600);
-        addToast('⚠️ Kayıt olmak için Kullanıcı Sözleşmesi\'ni okuyup kabul etmelisiniz', 'warning', 4000);
+        addToast('âš ï¸ KayÄ±t olmak iÃ§in KullanÄ±cÄ± SÃ¶zleÅŸmesi\'ni okuyup kabul etmelisiniz', 'warning', 4000);
         return false;
       }
     }
@@ -152,12 +152,12 @@ export default function LoginPage() {
 
         if (error) {
           if (error.message.includes('Invalid login credentials')) {
-            throw new Error('E-posta veya şifre hatalı');
+            throw new Error('E-posta veya ÅŸifre hatalÄ±');
           }
           throw error;
         }
         
-        addToast('Giriş başarılı! Hoş geldin 👋', 'success');
+        addToast('GiriÅŸ baÅŸarÄ±lÄ±! HoÅŸ geldin ðŸ‘‹', 'success');
         setTimeout(() => navigate('/'), 1000);
       } else {
         const { error } = await supabase.auth.signUp({
@@ -170,12 +170,12 @@ export default function LoginPage() {
 
         if (error) {
           if (error.message.includes('already registered')) {
-            throw new Error('Bu e-posta adresi zaten kayıtlı');
+            throw new Error('Bu e-posta adresi zaten kayÄ±tlÄ±');
           }
           throw error;
         }
 
-        // Kullanıcıyı users tablosuna ekle
+        // KullanÄ±cÄ±yÄ± users tablosuna ekle
         const { error: userError } = await supabase
           .from('users')
           .insert([{
@@ -191,24 +191,24 @@ export default function LoginPage() {
           console.error('User insert error:', userError);
         }
         
-        addToast('Kayıt başarılı! Hoş geldin 🎉', 'success');
+        addToast('KayÄ±t baÅŸarÄ±lÄ±! HoÅŸ geldin ðŸŽ‰', 'success');
         setTimeout(() => navigate('/'), 1500);
       }
     } catch (err) {
-      addToast(err.message || 'Bir hata oluştu', 'error');
+      addToast(err.message || 'Bir hata oluÅŸtu', 'error');
     } finally {
       setLoading(false);
     }
   };
 
   const strengthColors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-500', 'bg-green-500'];
-  const strengthLabels = ['Çok Zayıf', 'Zayıf', 'Orta', 'Güçlü', 'Çok Güçlü'];
+  const strengthLabels = ['Ã‡ok ZayÄ±f', 'ZayÄ±f', 'Orta', 'GÃ¼Ã§lÃ¼', 'Ã‡ok GÃ¼Ã§lÃ¼'];
 
   return (
     <div className="max-w-md mx-auto">
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
       <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700 shadow-2xl">
@@ -218,14 +218,14 @@ export default function LoginPage() {
             <Sparkles className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white mb-1">
-            {isLogin ? 'Tekrar Hoş Geldin!' : 'Aramıza Katıl'}
+            {isLogin ? 'Tekrar HoÅŸ Geldin!' : 'AramÄ±za KatÄ±l'}
           </h1>
           <p className="text-text-muted text-sm">
-            {isLogin ? 'Hesabına giriş yap' : 'Hemen ücretsiz hesap oluştur'}
+            {isLogin ? 'HesabÄ±na giriÅŸ yap' : 'Hemen Ã¼cretsiz hesap oluÅŸtur'}
           </p>
         </div>
 
-        {/* Mod Değiştirici */}
+        {/* Mod DeÄŸiÅŸtirici */}
         <div className="flex gap-2 mb-6 p-1 bg-dark-900 rounded-xl">
           <button
             onClick={() => setIsLogin(true)}
@@ -233,7 +233,7 @@ export default function LoginPage() {
               isLogin ? 'bg-primary text-white shadow-lg' : 'text-text-muted hover:text-white'
             }`}
           >
-            Giriş Yap
+            GiriÅŸ Yap
           </button>
           <button
             onClick={() => setIsLogin(false)}
@@ -241,16 +241,16 @@ export default function LoginPage() {
               !isLogin ? 'bg-primary text-white shadow-lg' : 'text-text-muted hover:text-white'
             }`}
           >
-            Kayıt Ol
+            KayÄ±t Ol
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Kullanıcı Adı (Sadece kayıtta) */}
+          {/* KullanÄ±cÄ± AdÄ± (Sadece kayÄ±tta) */}
           {!isLogin && (
             <div>
               <label className="block text-white text-sm font-medium mb-2">
-                Kullanıcı Adı <span className="text-red-500">*</span>
+                KullanÄ±cÄ± AdÄ± <span className="text-red-500">*</span>
               </label>
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
@@ -286,12 +286,12 @@ export default function LoginPage() {
                   {usernameStatus.available ? (
                     <p className="text-green-400 text-xs flex items-center gap-1">
                       <CheckCircle className="w-3 h-3" />
-                      Bu kullanıcı adı müsait
+                      Bu kullanÄ±cÄ± adÄ± mÃ¼sait
                     </p>
                   ) : (
                     <p className="text-red-400 text-xs flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
-                      Bu kullanıcı adı zaten alınmış
+                      Bu kullanÄ±cÄ± adÄ± zaten alÄ±nmÄ±ÅŸ
                     </p>
                   )}
                 </div>
@@ -299,7 +299,7 @@ export default function LoginPage() {
 
               {usernameStatus.suggestions.length > 0 && (
                 <div className="mt-3 p-3 bg-dark-900 rounded-xl border border-dark-700">
-                  <p className="text-text-muted text-xs mb-2">Önerilen kullanıcı adları:</p>
+                  <p className="text-text-muted text-xs mb-2">Ã–nerilen kullanÄ±cÄ± adlarÄ±:</p>
                   <div className="flex flex-wrap gap-2">
                     {usernameStatus.suggestions.map(suggestion => (
                       <button
@@ -334,9 +334,9 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Şifre */}
+          {/* Åžifre */}
           <div>
-            <label className="block text-white text-sm font-medium mb-2">Şifre</label>
+            <label className="block text-white text-sm font-medium mb-2">Åžifre</label>
             <div className="relative">
               <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
               <input
@@ -344,7 +344,7 @@ export default function LoginPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="••••••••"
+                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                 className="w-full bg-dark-900 text-white pl-10 pr-12 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted"
                 required
                 minLength={6}
@@ -371,16 +371,16 @@ export default function LoginPage() {
                   ))}
                 </div>
                 <p className="text-xs text-text-muted">
-                  Şifre gücü: <span className="text-white font-medium">{strengthLabels[passwordStrength - 1] || 'Çok Zayıf'}</span>
+                  Åžifre gÃ¼cÃ¼: <span className="text-white font-medium">{strengthLabels[passwordStrength - 1] || 'Ã‡ok ZayÄ±f'}</span>
                 </p>
               </div>
             )}
           </div>
 
-          {/* Şifre Tekrar (sadece kayıtta) */}
+          {/* Åžifre Tekrar (sadece kayÄ±tta) */}
           {!isLogin && (
             <div>
-              <label className="block text-white text-sm font-medium mb-2">Şifre Tekrar</label>
+              <label className="block text-white text-sm font-medium mb-2">Åžifre Tekrar</label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
                 <input
@@ -388,7 +388,7 @@ export default function LoginPage() {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  placeholder="••••••••"
+                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                   className={`w-full bg-dark-900 text-white pl-10 pr-12 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all placeholder-text-muted ${
                     formData.confirmPassword && formData.password !== formData.confirmPassword
                       ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20'
@@ -408,22 +408,22 @@ export default function LoginPage() {
               {formData.confirmPassword && formData.password !== formData.confirmPassword && (
                 <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" />
-                  Şifreler eşleşmiyor
+                  Åžifreler eÅŸleÅŸmiyor
                 </p>
               )}
             </div>
           )}
 
-          {/* Şifremi Unuttum */}
+          {/* Åžifremi Unuttum */}
           {isLogin && (
             <div className="flex justify-end">
               <button type="button" className="text-primary hover:text-primaryHover text-sm transition-colors">
-                Şifremi Unuttum
+                Åžifremi Unuttum
               </button>
             </div>
           )}
 
-          {/* SÖZLEŞME CHECKBOX (sadece kayıtta) */}
+          {/* SÃ–ZLEÅžME CHECKBOX (sadece kayÄ±tta) */}
           {!isLogin && (
             <div className={`bg-dark-900/50 rounded-xl p-4 border ${termsShake ? 'border-red-500 animate-shake' : 'border-dark-700'}`}>
               <label className="flex items-start gap-3 cursor-pointer group">
@@ -453,12 +453,12 @@ export default function LoginPage() {
                       className="text-primary hover:text-primaryHover font-medium underline decoration-dashed underline-offset-2 inline-flex items-center gap-1 transition-colors"
                     >
                       <Shield className="w-3.5 h-3.5" />
-                      Kullanıcı Sözleşmesi'ni
+                      KullanÄ±cÄ± SÃ¶zleÅŸmesi'ni
                     </button>
-                    {' '}okudum, anladım ve kabul ediyorum.
+                    {' '}okudum, anladÄ±m ve kabul ediyorum.
                   </span>
                   <p className="text-text-muted/60 text-xs mt-1.5">
-                    Kayıt olarak 18 yaşını doldurduğunuzu ve KVKK kapsamında verilerinizin işlenmesini kabul edersiniz.
+                    KayÄ±t olarak 18 yaÅŸÄ±nÄ± doldurduÄŸunuzu ve KVKK kapsamÄ±nda verilerinizin iÅŸlenmesini kabul edersiniz.
                   </p>
                 </div>
               </label>
@@ -474,10 +474,10 @@ export default function LoginPage() {
             {loading ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                İşleniyor...
+                Ä°ÅŸleniyor...
               </>
             ) : (
-              isLogin ? 'Giriş Yap' : 'Hesap Oluştur'
+              isLogin ? 'GiriÅŸ Yap' : 'Hesap OluÅŸtur'
             )}
           </button>
         </form>
@@ -487,22 +487,22 @@ export default function LoginPage() {
           <p className="text-text-muted text-xs">
             {isLogin ? (
               <>
-                Hesabın yok mu?{' '}
+                HesabÄ±n yok mu?{' '}
                 <button
                   onClick={() => setIsLogin(false)}
                   className="text-primary hover:text-primaryHover font-medium transition-colors"
                 >
-                  Hemen kayıt ol
+                  Hemen kayÄ±t ol
                 </button>
               </>
             ) : (
               <>
-                Zaten hesabın var mı?{' '}
+                Zaten hesabÄ±n var mÄ±?{' '}
                 <button
                   onClick={() => setIsLogin(true)}
                   className="text-primary hover:text-primaryHover font-medium transition-colors"
                 >
-                  Giriş yap
+                  GiriÅŸ yap
                 </button>
               </>
             )}
@@ -510,7 +510,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Sözleşme Modal */}
+      {/* SÃ¶zleÅŸme Modal */}
       <TermsModal 
         isOpen={termsModalOpen} 
         onClose={() => setTermsModalOpen(false)} 

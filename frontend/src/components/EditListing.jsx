@@ -21,7 +21,7 @@ export default function EditListing() {
   });
 
   useEffect(() => {
-    // Kategorileri yükle
+    // Kategorileri yÃ¼kle
     fetch('/api/categories')
       .then(res => res.json())
       .then(data => {
@@ -29,7 +29,7 @@ export default function EditListing() {
       })
       .catch(() => {});
 
-    // İlanı yükle
+    // Ä°lanÄ± yÃ¼kle
     fetch(`/api/listings/${id}`)
       .then(res => res.json())
       .then(data => {
@@ -45,8 +45,8 @@ export default function EditListing() {
         }
       })
       .catch(err => {
-        console.error('İlan yüklenemedi:', err);
-        addToast('İlan yüklenemedi', 'error');
+        console.error('Ä°lan yÃ¼klenemedi:', err);
+        addToast('Ä°lan yÃ¼klenemedi', 'error');
       })
       .finally(() => setLoading(false));
   }, [id, addToast]);
@@ -63,7 +63,7 @@ export default function EditListing() {
     e.preventDefault();
     
     if (!formData.title || !formData.price || !formData.category_slug) {
-      addToast('Lütfen zorunlu alanları doldurun', 'warning');
+      addToast('LÃ¼tfen zorunlu alanlarÄ± doldurun', 'warning');
       return;
     }
 
@@ -78,9 +78,9 @@ export default function EditListing() {
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || 'Güncelleme başarısız');
+      if (!res.ok) throw new Error(data.error || 'GÃ¼ncelleme baÅŸarÄ±sÄ±z');
 
-      addToast('İlan başarıyla güncellendi', 'success');
+      addToast('Ä°lan baÅŸarÄ±yla gÃ¼ncellendi', 'success');
       setTimeout(() => navigate('/profile'), 1000);
     } catch (err) {
       addToast(err.message, 'error');
@@ -90,7 +90,7 @@ export default function EditListing() {
   };
 
   const handleDelete = async () => {
-    if (!window.confirm('Bu ilanı silmek istediğinize emin misiniz?')) return;
+    if (!window.confirm('Bu ilanÄ± silmek istediÄŸinize emin misiniz?')) return;
 
     try {
       const res = await fetch(`/api/listings/${id}`, {
@@ -99,9 +99,9 @@ export default function EditListing() {
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || 'Silme başarısız');
+      if (!res.ok) throw new Error(data.error || 'Silme baÅŸarÄ±sÄ±z');
 
-      addToast('İlan silindi', 'success');
+      addToast('Ä°lan silindi', 'success');
       setTimeout(() => navigate('/profile'), 1000);
     } catch (err) {
       addToast(err.message, 'error');
@@ -112,7 +112,7 @@ export default function EditListing() {
     return (
       <div className="text-center py-16">
         <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-text-muted mt-4">Yükleniyor...</p>
+        <p className="text-text-muted mt-4">YÃ¼kleniyor...</p>
       </div>
     );
   }
@@ -121,29 +121,29 @@ export default function EditListing() {
     <div className="max-w-3xl mx-auto">
       <Link to="/profile" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Profile Dön
+        Profile DÃ¶n
       </Link>
 
       <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700">
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">İlanı Düzenle</h1>
-            <p className="text-text-muted">İlan bilgilerini güncelle</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Ä°lanÄ± DÃ¼zenle</h1>
+            <p className="text-text-muted">Ä°lan bilgilerini gÃ¼ncelle</p>
           </div>
           <button
             onClick={handleDelete}
             className="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-all border border-red-500/30"
           >
             <Trash2 className="w-4 h-4" />
-            İlanı Sil
+            Ä°lanÄ± Sil
           </button>
         </div>
 
         <form onSubmit={handleSave} className="space-y-6">
-          {/* Başlık */}
+          {/* BaÅŸlÄ±k */}
           <div>
             <label className="block text-white font-medium mb-2">
-              İlan Başlığı <span className="text-red-500">*</span>
+              Ä°lan BaÅŸlÄ±ÄŸÄ± <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -155,9 +155,9 @@ export default function EditListing() {
             />
           </div>
 
-          {/* Açıklama */}
+          {/* AÃ§Ä±klama */}
           <div>
-            <label className="block text-white font-medium mb-2">Açıklama</label>
+            <label className="block text-white font-medium mb-2">AÃ§Ä±klama</label>
             <textarea
               name="description"
               value={formData.description}
@@ -171,7 +171,7 @@ export default function EditListing() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-white font-medium mb-2">
-                Fiyat (₺) <span className="text-red-500">*</span>
+                Fiyat (â‚º) <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -196,7 +196,7 @@ export default function EditListing() {
                 className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 required
               >
-                <option value="">Kategori Seçin</option>
+                <option value="">Kategori SeÃ§in</option>
                 {categories.map(cat => (
                   <option key={cat.slug} value={cat.slug}>
                     {cat.name}
@@ -206,9 +206,9 @@ export default function EditListing() {
             </div>
           </div>
 
-          {/* Görsel URL */}
+          {/* GÃ¶rsel URL */}
           <div>
-            <label className="block text-white font-medium mb-2">Görsel URL</label>
+            <label className="block text-white font-medium mb-2">GÃ¶rsel URL</label>
             <input
               type="url"
               name="image"
@@ -230,7 +230,7 @@ export default function EditListing() {
               className="w-5 h-5 rounded bg-dark-800 border-dark-700 text-primary focus:ring-primary"
             />
             <label htmlFor="is_featured" className="text-white cursor-pointer">
-              <span className="font-medium">Vitrin ilanı olarak işaretle</span>
+              <span className="font-medium">Vitrin ilanÄ± olarak iÅŸaretle</span>
             </label>
           </div>
 
@@ -249,7 +249,7 @@ export default function EditListing() {
               ) : (
                 <>
                   <Save className="w-5 h-5" />
-                  Değişiklikleri Kaydet
+                  DeÄŸiÅŸiklikleri Kaydet
                 </>
               )}
             </button>

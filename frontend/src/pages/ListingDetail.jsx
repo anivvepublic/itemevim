@@ -12,7 +12,7 @@ import { useFavorites } from '../context/FavoritesContext';
 import { useCart } from '../context/CartContext';
 import ListingCard from '../components/ListingCard';
 
-// Özel Sosyal Medya İkonları (lucide-react'te yok)
+// Ã–zel Sosyal Medya Ä°konlarÄ± (lucide-react'te yok)
 const TwitterIcon = ({ className }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -62,10 +62,10 @@ export default function ListingDetail() {
         fetch(`/api/listings/${id}/view`, { method: 'POST' }).catch(() => {});
         
         const res = await fetch(`/api/listings/${id}`);
-        if (!res.ok) throw new Error('İlan bulunamadı');
+        if (!res.ok) throw new Error('Ä°lan bulunamadÄ±');
         
         const data = await res.json();
-        if (!data || !data.id) throw new Error('İlan verisi boş');
+        if (!data || !data.id) throw new Error('Ä°lan verisi boÅŸ');
         
         setListing(data);
 
@@ -102,8 +102,8 @@ export default function ListingDetail() {
           }
         }
       } catch (err) {
-        console.error('İlan yüklenemedi:', err);
-        addToast('İlan bulunamadı veya yüklenemedi', 'error');
+        console.error('Ä°lan yÃ¼klenemedi:', err);
+        addToast('Ä°lan bulunamadÄ± veya yÃ¼klenemedi', 'error');
         setTimeout(() => navigate('/'), 2000);
       } finally {
         setLoading(false);
@@ -147,17 +147,17 @@ export default function ListingDetail() {
     e.preventDefault();
     
     if (!currentUser) {
-      addToast('Yorum yapmak için giriş yapmalısınız', 'warning');
+      addToast('Yorum yapmak iÃ§in giriÅŸ yapmalÄ±sÄ±nÄ±z', 'warning');
       return;
     }
 
     if (!currentUserId) {
-      addToast('Kullanıcı bilgisi bulunamadı', 'error');
+      addToast('KullanÄ±cÄ± bilgisi bulunamadÄ±', 'error');
       return;
     }
 
     if (!newReview.comment.trim()) {
-      addToast('Lütfen yorum yazın', 'warning');
+      addToast('LÃ¼tfen yorum yazÄ±n', 'warning');
       return;
     }
 
@@ -202,7 +202,7 @@ export default function ListingDetail() {
 
   const handleAddToCart = () => {
     if (!currentUser) {
-      addToast('Sepete eklemek için giriş yapmalısınız', 'warning');
+      addToast('Sepete eklemek iÃ§in giriÅŸ yapmalÄ±sÄ±nÄ±z', 'warning');
       navigate('/login');
       return;
     }
@@ -211,27 +211,27 @@ export default function ListingDetail() {
 
 const handleSendMessage = () => {
   if (!currentUser) {
-    addToast('Mesaj göndermek için giriş yapmalısınız', 'warning');
+    addToast('Mesaj gÃ¶ndermek iÃ§in giriÅŸ yapmalÄ±sÄ±nÄ±z', 'warning');
     navigate('/login');
     return;
   }
 
   if (listing?.seller_id) {
-    // Kendi ilanına mesaj atamazsın
+    // Kendi ilanÄ±na mesaj atamazsÄ±n
     if (listing.seller_id === currentUserId) {
-      addToast('Kendi ilanınıza mesaj gönderemezsiniz', 'warning');
+      addToast('Kendi ilanÄ±nÄ±za mesaj gÃ¶nderemezsiniz', 'warning');
       return;
     }
-    // Satıcı ID'sini URL parametresi olarak gönder
+    // SatÄ±cÄ± ID'sini URL parametresi olarak gÃ¶nder
     navigate(`/messages?to=${listing.seller_id}`);
   } else {
-    addToast('Satıcı bilgisi bulunamadı', 'error');
+    addToast('SatÄ±cÄ± bilgisi bulunamadÄ±', 'error');
   }
 };
 
   const handleReport = async () => {
     if (!reportReason) {
-      addToast('Lütfen bir rapor sebebi seçin', 'warning');
+      addToast('LÃ¼tfen bir rapor sebebi seÃ§in', 'warning');
       return;
     }
 
@@ -248,9 +248,9 @@ const handleSendMessage = () => {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Rapor gönderilemedi');
+      if (!res.ok) throw new Error(data.error || 'Rapor gÃ¶nderilemedi');
 
-      addToast('Raporunuz alındı. En kısa sürede incelenecek.', 'success');
+      addToast('Raporunuz alÄ±ndÄ±. En kÄ±sa sÃ¼rede incelenecek.', 'success');
       setReportOpen(false);
       setReportReason('');
       setReportDescription('');
@@ -263,7 +263,7 @@ const handleSendMessage = () => {
 
   const handleShare = (platform) => {
     const url = window.location.href;
-    const text = `${listing.title} - ₺${listing.price}`;
+    const text = `${listing.title} - â‚º${listing.price}`;
     
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
@@ -273,7 +273,7 @@ const handleSendMessage = () => {
 
     if (platform === 'copy') {
       navigator.clipboard.writeText(url);
-      addToast('Link kopyalandı!', 'success', 2000);
+      addToast('Link kopyalandÄ±!', 'success', 2000);
       return;
     }
 
@@ -285,7 +285,7 @@ const handleSendMessage = () => {
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center">
           <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
-          <p className="text-text-muted">İlan yükleniyor...</p>
+          <p className="text-text-muted">Ä°lan yÃ¼kleniyor...</p>
         </div>
       </div>
     );
@@ -295,10 +295,10 @@ const handleSendMessage = () => {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="bg-dark-800 rounded-2xl p-12 border border-dark-700 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">İlan Bulunamadı</h2>
-          <p className="text-text-muted mb-6">Bu ilan silinmiş veya bulunamıyor.</p>
+          <h2 className="text-2xl font-bold text-white mb-2">Ä°lan BulunamadÄ±</h2>
+          <p className="text-text-muted mb-6">Bu ilan silinmiÅŸ veya bulunamÄ±yor.</p>
           <Link to="/" className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-semibold transition-all">
-            Ana Sayfaya Dön
+            Ana Sayfaya DÃ¶n
           </Link>
         </div>
       </div>
@@ -313,25 +313,25 @@ const handleSendMessage = () => {
   const tags = Array.isArray(listing.tags) ? listing.tags : [];
 
   const reportReasons = [
-    'Sahte veya yanıltıcı ilan',
-    'Yasadışı ürün/hizmet',
-    'Dolandırıcılık şüphesi',
-    'Telif hakkı ihlali',
-    'Uygunsuz içerik',
+    'Sahte veya yanÄ±ltÄ±cÄ± ilan',
+    'YasadÄ±ÅŸÄ± Ã¼rÃ¼n/hizmet',
+    'DolandÄ±rÄ±cÄ±lÄ±k ÅŸÃ¼phesi',
+    'Telif hakkÄ± ihlali',
+    'Uygunsuz iÃ§erik',
     'Spam veya reklam',
-    'Diğer'
+    'DiÄŸer'
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          {/* GALERİ */}
+          {/* GALERÄ° */}
           <div ref={galleryRef} className="rounded-2xl overflow-hidden mb-6 border border-dark-700 bg-dark-800">
             <div className="relative aspect-video bg-dark-900 cursor-pointer group" onClick={() => openLightbox(currentImageIndex)}>
               <img 
@@ -345,14 +345,14 @@ const handleSendMessage = () => {
                   <button
                     onClick={(e) => { e.stopPropagation(); prevImage(); }}
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-dark-900/80 hover:bg-dark-900 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                    aria-label="Önceki fotoğraf"
+                    aria-label="Ã–nceki fotoÄŸraf"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); nextImage(); }}
                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-dark-900/80 hover:bg-dark-900 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                    aria-label="Sonraki fotoğraf"
+                    aria-label="Sonraki fotoÄŸraf"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
@@ -369,7 +369,7 @@ const handleSendMessage = () => {
 
               <div className="absolute top-4 left-4 bg-dark-900/80 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
                 <Eye className="w-3 h-3" />
-                {listing.views || 0} görüntülenme
+                {listing.views || 0} gÃ¶rÃ¼ntÃ¼lenme
               </div>
             </div>
 
@@ -397,7 +397,7 @@ const handleSendMessage = () => {
             )}
           </div>
 
-          {/* BAŞLIK */}
+          {/* BAÅžLIK */}
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-white mb-4">{listing.title}</h1>
             
@@ -428,12 +428,12 @@ const handleSendMessage = () => {
             )}
           </div>
 
-          {/* BİLGİ KARTLARI */}
+          {/* BÄ°LGÄ° KARTLARI */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
             <div className="bg-gradient-to-br from-primary/10 to-purple-900/10 rounded-xl p-4 border border-primary/20">
               <div className="flex items-center gap-2 text-text-muted text-xs mb-1">
                 <Clock className="w-3.5 h-3.5" />
-                Teslimat Süresi
+                Teslimat SÃ¼resi
               </div>
               <div className="text-white font-semibold">{listing.delivery_time || '24 saat'}</div>
             </div>
@@ -443,19 +443,19 @@ const handleSendMessage = () => {
                 Garanti
               </div>
               <div className="text-white font-semibold">
-                {listing.guarantee_days > 0 ? `${listing.guarantee_days} Gün` : 'Garanti Yok'}
+                {listing.guarantee_days > 0 ? `${listing.guarantee_days} GÃ¼n` : 'Garanti Yok'}
               </div>
             </div>
             <div className="bg-gradient-to-br from-blue-500/10 to-indigo-900/10 rounded-xl p-4 border border-blue-500/20">
               <div className="flex items-center gap-2 text-text-muted text-xs mb-1">
                 <Eye className="w-3.5 h-3.5 text-blue-400" />
-                Görüntülenme
+                GÃ¶rÃ¼ntÃ¼lenme
               </div>
               <div className="text-white font-semibold">{listing.views || 0} kez</div>
             </div>
           </div>
 
-          {/* TEKNİK DETAYLAR */}
+          {/* TEKNÄ°K DETAYLAR */}
           {Object.keys(details).length > 0 && (
             <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 mb-6">
               <h2 className="text-white font-semibold mb-4 flex items-center gap-2">
@@ -479,22 +479,22 @@ const handleSendMessage = () => {
             </div>
           )}
 
-          {/* AÇIKLAMA */}
+          {/* AÃ‡IKLAMA */}
           {listing.description && (
             <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 mb-6">
               <h2 className="text-white font-semibold mb-3 flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-primary" />
-                Açıklama
+                AÃ§Ä±klama
               </h2>
               <p className="text-text-muted leading-relaxed whitespace-pre-wrap">{listing.description}</p>
             </div>
           )}
 
-          {/* GÜVENLİ ALIŞVERİŞ */}
+          {/* GÃœVENLÄ° ALIÅžVERÄ°Åž */}
           <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 mb-6">
             <h2 className="text-white font-semibold mb-4 flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
-              Güvenli Alışveriş Garantisi
+              GÃ¼venli AlÄ±ÅŸveriÅŸ Garantisi
             </h2>
             <ul className="space-y-2 text-text-muted text-sm">
               <li className="flex items-start gap-2">
@@ -503,35 +503,35 @@ const handleSendMessage = () => {
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                <span>Anında teslim veya belirtilen sürede teslim garantisi</span>
+                <span>AnÄ±nda teslim veya belirtilen sÃ¼rede teslim garantisi</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                <span>{listing.guarantee_days > 0 ? `${listing.guarantee_days} gün boyunca değişim/iade garantisi` : 'Satıcıyla iletişime geçerek destek alabilirsiniz'}</span>
+                <span>{listing.guarantee_days > 0 ? `${listing.guarantee_days} gÃ¼n boyunca deÄŸiÅŸim/iade garantisi` : 'SatÄ±cÄ±yla iletiÅŸime geÃ§erek destek alabilirsiniz'}</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                <span>7/24 Müşteri Desteği</span>
+                <span>7/24 MÃ¼ÅŸteri DesteÄŸi</span>
               </li>
             </ul>
           </div>
 
-          {/* PAYLAŞ + RAPORLA */}
+          {/* PAYLAÅž + RAPORLA */}
           <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 mb-6">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <h3 className="text-white font-semibold mb-2 flex items-center gap-2">
                   <Share2 className="w-4 h-4 text-primary" />
-                  Paylaş
+                  PaylaÅŸ
                 </h3>
                 <div className="flex gap-2">
-                  <button onClick={() => handleShare('twitter')} className="w-10 h-10 bg-dark-700 hover:bg-blue-500/20 hover:text-blue-400 text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="Twitter'da paylaş">
+                  <button onClick={() => handleShare('twitter')} className="w-10 h-10 bg-dark-700 hover:bg-blue-500/20 hover:text-blue-400 text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="Twitter'da paylaÅŸ">
                     <TwitterIcon className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleShare('facebook')} className="w-10 h-10 bg-dark-700 hover:bg-blue-600/20 hover:text-blue-500 text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="Facebook'ta paylaş">
+                  <button onClick={() => handleShare('facebook')} className="w-10 h-10 bg-dark-700 hover:bg-blue-600/20 hover:text-blue-500 text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="Facebook'ta paylaÅŸ">
                     <FacebookIcon className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleShare('whatsapp')} className="w-10 h-10 bg-dark-700 hover:bg-green-500/20 hover:text-green-400 text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="WhatsApp'ta paylaş">
+                  <button onClick={() => handleShare('whatsapp')} className="w-10 h-10 bg-dark-700 hover:bg-green-500/20 hover:text-green-400 text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="WhatsApp'ta paylaÅŸ">
                     <MessageSquare className="w-4 h-4" />
                   </button>
                   <button onClick={() => handleShare('copy')} className="w-10 h-10 bg-dark-700 hover:bg-primary/20 hover:text-primary text-text-muted rounded-lg flex items-center justify-center transition-all" aria-label="Linki kopyala">
@@ -545,7 +545,7 @@ const handleSendMessage = () => {
                 className="flex items-center gap-2 text-text-muted hover:text-red-400 text-sm transition-colors"
               >
                 <Flag className="w-4 h-4" />
-                İlanı Raporla
+                Ä°lanÄ± Raporla
               </button>
             </div>
           </div>
@@ -560,7 +560,7 @@ const handleSendMessage = () => {
             {currentUser && (
               <form onSubmit={handleSubmitReview} className="mb-6 pb-6 border-b border-dark-700">
                 <div className="mb-3">
-                  <label className="block text-white text-sm font-medium mb-2">Puanınız</label>
+                  <label className="block text-white text-sm font-medium mb-2">PuanÄ±nÄ±z</label>
                   <div className="flex gap-1">
                     {[1, 2, 3, 4, 5].map(star => (
                       <button
@@ -578,7 +578,7 @@ const handleSendMessage = () => {
                   <textarea
                     value={newReview.comment}
                     onChange={(e) => setNewReview(prev => ({ ...prev, comment: e.target.value }))}
-                    placeholder="Yorumunuzu yazın..."
+                    placeholder="Yorumunuzu yazÄ±n..."
                     rows="3"
                     className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted resize-none"
                     required
@@ -590,16 +590,16 @@ const handleSendMessage = () => {
                   className="bg-primary hover:bg-primaryHover disabled:bg-dark-700 disabled:cursor-not-allowed text-white px-5 py-2.5 rounded-lg font-medium transition-all flex items-center gap-2"
                 >
                   {submittingReview ? (
-                    <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Gönderiliyor...</>
+                    <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> GÃ¶nderiliyor...</>
                   ) : (
-                    <><Send className="w-4 h-4" /> Yorumu Gönder</>
+                    <><Send className="w-4 h-4" /> Yorumu GÃ¶nder</>
                   )}
                 </button>
               </form>
             )}
 
             {reviews.length === 0 ? (
-              <p className="text-text-muted text-center py-8">Henüz yorum yapılmamış. İlk yorumu sen yap!</p>
+              <p className="text-text-muted text-center py-8">HenÃ¼z yorum yapÄ±lmamÄ±ÅŸ. Ä°lk yorumu sen yap!</p>
             ) : (
               <div className="space-y-4">
                 {reviews.map(review => (
@@ -609,12 +609,12 @@ const handleSendMessage = () => {
                         {review.reviewer?.avatar ? (
                           <img src={review.reviewer.avatar} alt={review.reviewer.username} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-sm">👤</div>
+                          <div className="w-full h-full flex items-center justify-center text-sm">ðŸ‘¤</div>
                         )}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-white font-medium text-sm">{review.reviewer?.username || 'Kullanıcı'}</span>
+                          <span className="text-white font-medium text-sm">{review.reviewer?.username || 'KullanÄ±cÄ±'}</span>
                           <div className="flex gap-0.5">
                             {[1, 2, 3, 4, 5].map(star => (
                               <Star key={star} className={`w-3 h-3 ${star <= review.rating ? 'text-yellow-500 fill-yellow-500' : 'text-text-muted'}`} />
@@ -633,12 +633,12 @@ const handleSendMessage = () => {
             )}
           </div>
 
-          {/* SATICININ DİĞER İLANLARI */}
+          {/* SATICININ DÄ°ÄžER Ä°LANLARI */}
           {sellerOtherListings.length > 0 && (
             <div className="mb-6">
               <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <User className="w-5 h-5 text-primary" />
-                {listing.seller?.username} - Diğer İlanları
+                {listing.seller?.username} - DiÄŸer Ä°lanlarÄ±
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {sellerOtherListings.map(item => (
@@ -648,12 +648,12 @@ const handleSendMessage = () => {
             </div>
           )}
 
-          {/* BENZER İLANLAR */}
+          {/* BENZER Ä°LANLAR */}
           {similarListings.length > 0 && (
             <div>
               <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <Package className="w-5 h-5 text-primary" />
-                Benzer İlanlar
+                Benzer Ä°lanlar
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {similarListings.map(item => (
@@ -664,13 +664,13 @@ const handleSendMessage = () => {
           )}
         </div>
 
-        {/* SAĞ */}
+        {/* SAÄž */}
         <div className="lg:col-span-1">
           <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 sticky top-24 space-y-6">
             <div>
               <span className="text-text-muted text-sm block mb-1">Fiyat</span>
               <span className="text-4xl font-bold text-white">
-                ₺{listing.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+                â‚º{listing.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
               </span>
             </div>
 
@@ -685,7 +685,7 @@ const handleSendMessage = () => {
                 }`}
               >
                 <ShoppingCart className="w-5 h-5" />
-                {inCart ? 'Sepette ✓' : 'Sepete Ekle'}
+                {inCart ? 'Sepette âœ“' : 'Sepete Ekle'}
               </button>
 
               {inCart && (
@@ -693,7 +693,7 @@ const handleSendMessage = () => {
                   to="/cart"
                   className="w-full bg-dark-700 hover:bg-dark-600 text-white py-3.5 rounded-xl font-semibold border border-dark-600 transition-all flex items-center justify-center gap-2"
                 >
-                  Sepeti Görüntüle
+                  Sepeti GÃ¶rÃ¼ntÃ¼le
                 </Link>
               )}
 
@@ -702,7 +702,7 @@ const handleSendMessage = () => {
                 className="w-full bg-dark-700 hover:bg-dark-600 text-white py-3.5 rounded-xl font-semibold border border-dark-600 transition-all flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-4 h-4" />
-                Satıcıya Mesaj Gönder
+                SatÄ±cÄ±ya Mesaj GÃ¶nder
               </button>
 
               <button
@@ -714,19 +714,19 @@ const handleSendMessage = () => {
                 }`}
               >
                 <Heart className={`w-4 h-4 ${favorite ? 'fill-red-400' : ''}`} />
-                {favorite ? 'Favorilerden Çıkar' : 'Favorilere Ekle'}
+                {favorite ? 'Favorilerden Ã‡Ä±kar' : 'Favorilere Ekle'}
               </button>
             </div>
 
             {listing.seller && (
               <div className="pt-6 border-t border-dark-700">
-                <span className="text-text-muted text-sm block mb-3">Satıcı</span>
+                <span className="text-text-muted text-sm block mb-3">SatÄ±cÄ±</span>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-14 h-14 rounded-full bg-dark-700 overflow-hidden border-2 border-dark-600 flex-shrink-0">
                     {listing.seller.avatar ? (
                       <img src={listing.seller.avatar} alt={listing.seller.username} className="w-full h-full object-cover" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-xl">👤</div>
+                      <div className="w-full h-full flex items-center justify-center text-xl">ðŸ‘¤</div>
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -741,14 +741,14 @@ const handleSendMessage = () => {
                         <span className="text-xs">({sellerRating.reviewCount} yorum)</span>
                       </div>
                     ) : (
-                      <p className="text-text-muted text-xs">Henüz yorum yok</p>
+                      <p className="text-text-muted text-xs">HenÃ¼z yorum yok</p>
                     )}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 mt-4">
                   <div className="bg-dark-900 rounded-lg p-3 text-center">
-                    <div className="text-text-muted text-xs mb-1">Üyelik</div>
+                    <div className="text-text-muted text-xs mb-1">Ãœyelik</div>
                     <div className="text-white font-semibold text-sm">
                       {new Date(listing.seller.created_at || Date.now()).getFullYear()}
                     </div>
@@ -779,14 +779,14 @@ const handleSendMessage = () => {
               <button
                 onClick={(e) => { e.stopPropagation(); prevImage(); }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-dark-900/80 hover:bg-dark-900 text-white p-3 rounded-full z-10"
-                aria-label="Önceki fotoğraf"
+                aria-label="Ã–nceki fotoÄŸraf"
               >
                 <ChevronLeft className="w-8 h-8" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); nextImage(); }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-dark-900/80 hover:bg-dark-900 text-white p-3 rounded-full z-10"
-                aria-label="Sonraki fotoğraf"
+                aria-label="Sonraki fotoÄŸraf"
               >
                 <ChevronRight className="w-8 h-8" />
               </button>
@@ -805,7 +805,7 @@ const handleSendMessage = () => {
           </div>
 
           <div className="absolute bottom-4 right-4 text-text-muted text-xs">
-            ← → ok tuşları ile gezinin • ESC ile kapatın
+            â† â†’ ok tuÅŸlarÄ± ile gezinin â€¢ ESC ile kapatÄ±n
           </div>
         </div>
       )}
@@ -817,7 +817,7 @@ const handleSendMessage = () => {
             <div className="p-6 border-b border-dark-700 flex justify-between items-center">
               <h2 className="text-xl font-bold text-white flex items-center gap-2">
                 <Flag className="w-5 h-5 text-red-400" />
-                İlanı Raporla
+                Ä°lanÄ± Raporla
               </h2>
               <button onClick={() => setReportOpen(false)} className="text-text-muted hover:text-white">
                 <X className="w-5 h-5" />
@@ -825,7 +825,7 @@ const handleSendMessage = () => {
             </div>
             <div className="p-6">
               <p className="text-text-muted text-sm mb-4">
-                Bu ilanı neden raporlamak istiyorsunuz?
+                Bu ilanÄ± neden raporlamak istiyorsunuz?
               </p>
 
               <div className="space-y-2 mb-4">
@@ -854,7 +854,7 @@ const handleSendMessage = () => {
               <textarea
                 value={reportDescription}
                 onChange={(e) => setReportDescription(e.target.value)}
-                placeholder="Eklemek istediğiniz detaylar (opsiyonel)"
+                placeholder="Eklemek istediÄŸiniz detaylar (opsiyonel)"
                 rows="3"
                 className="w-full bg-dark-900 text-white px-4 py-3 rounded-xl border border-dark-700 focus:outline-none focus:border-primary text-sm resize-none"
               />
@@ -864,14 +864,14 @@ const handleSendMessage = () => {
                   onClick={() => setReportOpen(false)}
                   className="flex-1 bg-dark-700 hover:bg-dark-600 text-white py-2.5 rounded-lg font-medium transition-all"
                 >
-                  İptal
+                  Ä°ptal
                 </button>
                 <button
                   onClick={handleReport}
                   disabled={submittingReport || !reportReason}
                   className="flex-1 bg-red-500 hover:bg-red-600 disabled:bg-dark-700 disabled:cursor-not-allowed text-white py-2.5 rounded-lg font-medium transition-all"
                 >
-                  {submittingReport ? 'Gönderiliyor...' : 'Raporu Gönder'}
+                  {submittingReport ? 'GÃ¶nderiliyor...' : 'Raporu GÃ¶nder'}
                 </button>
               </div>
             </div>

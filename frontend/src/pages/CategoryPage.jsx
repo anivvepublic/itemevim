@@ -40,7 +40,7 @@ export default function CategoryPage() {
           results = results.filter(l => l.price <= parseFloat(priceRange.max));
         }
 
-        // Sıralama
+        // SÄ±ralama
         switch (sortBy) {
           case 'price_asc':
             results.sort((a, b) => a.price - b.price);
@@ -56,7 +56,7 @@ export default function CategoryPage() {
 
         setListings(results);
       } catch (err) {
-        console.error('Kategori yüklenemedi:', err);
+        console.error('Kategori yÃ¼klenemedi:', err);
       } finally {
         setLoading(false);
       }
@@ -69,10 +69,10 @@ export default function CategoryPage() {
     <div>
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
-      {/* Başlık */}
+      {/* BaÅŸlÄ±k */}
       <div className="bg-dark-800 rounded-2xl p-8 mb-6 border border-dark-700">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
@@ -102,9 +102,9 @@ export default function CategoryPage() {
       {showFilters && (
         <div className="bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-700">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Fiyat Aralığı */}
+            {/* Fiyat AralÄ±ÄŸÄ± */}
             <div>
-              <label className="block text-white text-sm font-medium mb-2">Fiyat Aralığı</label>
+              <label className="block text-white text-sm font-medium mb-2">Fiyat AralÄ±ÄŸÄ±</label>
               <div className="flex gap-2">
                 <input
                   type="number"
@@ -123,17 +123,17 @@ export default function CategoryPage() {
               </div>
             </div>
 
-            {/* Sıralama */}
+            {/* SÄ±ralama */}
             <div>
-              <label className="block text-white text-sm font-medium mb-2">Sıralama</label>
+              <label className="block text-white text-sm font-medium mb-2">SÄ±ralama</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="w-full bg-dark-900 text-white px-3 py-2 rounded-lg border border-dark-700 focus:outline-none focus:border-primary text-sm"
               >
                 <option value="newest">En Yeni</option>
-                <option value="price_asc">Fiyat: Düşükten Yükseğe</option>
-                <option value="price_desc">Fiyat: Yüksekten Düşüğe</option>
+                <option value="price_asc">Fiyat: DÃ¼ÅŸÃ¼kten YÃ¼kseÄŸe</option>
+                <option value="price_desc">Fiyat: YÃ¼ksekten DÃ¼ÅŸÃ¼ÄŸe</option>
               </select>
             </div>
 
@@ -153,17 +153,17 @@ export default function CategoryPage() {
         </div>
       )}
 
-      {/* İlan Listesi */}
+      {/* Ä°lan Listesi */}
       {loading ? (
         <div className="text-center py-16">
           <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-text-muted mt-4">İlanlar yükleniyor...</p>
+          <p className="text-text-muted mt-4">Ä°lanlar yÃ¼kleniyor...</p>
         </div>
       ) : listings.length === 0 ? (
         <div className="bg-dark-800 rounded-xl border border-dark-700 p-12 text-center">
-          <p className="text-text-muted text-lg mb-2">Bu kategoride ilan bulunamadı.</p>
+          <p className="text-text-muted text-lg mb-2">Bu kategoride ilan bulunamadÄ±.</p>
           <Link to="/" className="text-primary hover:underline">
-            ← Ana Sayfaya Dön
+            â† Ana Sayfaya DÃ¶n
           </Link>
         </div>
       ) : (

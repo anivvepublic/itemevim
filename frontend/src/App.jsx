@@ -63,7 +63,7 @@ function HomePage() {
           setLatestListings(latestData.data);
         }
       } catch (err) {
-        console.error('İlanlar yüklenemedi:', err);
+        console.error('Ä°lanlar yÃ¼klenemedi:', err);
       } finally {
         setLoading(false);
       }
@@ -81,12 +81,12 @@ function HomePage() {
       {loading ? (
         <div className="text-center py-16">
           <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-text-muted mt-4 text-sm">İlanlar yükleniyor...</p>
+          <p className="text-text-muted mt-4 text-sm">Ä°lanlar yÃ¼kleniyor...</p>
         </div>
       ) : (
         <>
           {featuredListings.length > 0 && (
-            <FeaturedListings listings={featuredListings} title="Vitrin İlanları" />
+            <FeaturedListings listings={featuredListings} title="Vitrin Ä°lanlarÄ±" />
           )}
           <LatestListings listings={latestListings} />
         </>

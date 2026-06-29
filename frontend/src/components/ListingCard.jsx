@@ -11,7 +11,7 @@ export default function ListingCard({ listing }) {
 
   return (
     <div className="group bg-dark-800 rounded-xl overflow-hidden border border-dark-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
-      {/* Görsel */}
+      {/* GÃ¶rsel */}
       <div className="relative aspect-[16/10] overflow-hidden bg-dark-900">
         <Link to={`/listing/${listing.id}`}>
           <img
@@ -51,29 +51,29 @@ export default function ListingCard({ listing }) {
               ? 'bg-red-500 text-white shadow-lg shadow-red-500/50' 
               : 'bg-dark-900/80 backdrop-blur-sm text-white hover:bg-red-500 hover:text-white border border-white/10'
           }`}
-          aria-label={favorite ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+          aria-label={favorite ? 'Favorilerden Ã§Ä±kar' : 'Favorilere ekle'}
         >
           <Heart className={`w-4 h-4 ${favorite ? 'fill-white' : ''}`} />
         </button>
       </div>
 
-      {/* İçerik */}
+      {/* Ä°Ã§erik */}
       <div className="p-4">
-        {/* Başlık */}
+        {/* BaÅŸlÄ±k */}
         <Link to={`/listing/${listing.id}`}>
           <h3 className="text-white font-semibold text-sm mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-snug min-h-[2.5rem]">
             {listing.title}
           </h3>
         </Link>
         
-        {/* Kısa Açıklama */}
+        {/* KÄ±sa AÃ§Ä±klama */}
         {listing.description && (
           <p className="text-text-muted text-xs mb-3 line-clamp-2 leading-relaxed">
             {listing.description}
           </p>
         )}
 
-        {/* Satıcı Bilgisi */}
+        {/* SatÄ±cÄ± Bilgisi */}
         <div className="flex items-center justify-between mb-3 pb-3 border-b border-dark-700">
           <div className="flex items-center gap-2 min-w-0">
             <div className="w-6 h-6 rounded-full bg-dark-700 overflow-hidden flex-shrink-0 border border-dark-600">
@@ -84,16 +84,16 @@ export default function ListingCard({ listing }) {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-xs">👤</div>
+                <div className="w-full h-full flex items-center justify-center text-xs">ðŸ‘¤</div>
               )}
             </div>
-            <span className="text-text-muted text-xs truncate">{listing.seller?.username || 'Satıcı'}</span>
+            <span className="text-text-muted text-xs truncate">{listing.seller?.username || 'SatÄ±cÄ±'}</span>
           </div>
           
           {listing.seller?.verified && (
             <div className="flex items-center gap-1 text-primary flex-shrink-0">
               <CheckCircle className="w-3.5 h-3.5" />
-              <span className="text-[10px] font-medium">Onaylı</span>
+              <span className="text-[10px] font-medium">OnaylÄ±</span>
             </div>
           )}
         </div>
@@ -103,7 +103,7 @@ export default function ListingCard({ listing }) {
           <div>
             <span className="text-text-muted text-xs block">Fiyat</span>
             <span className="text-white font-bold text-lg">
-              ₺{listing.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+              â‚º{listing.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
             </span>
           </div>
           <button

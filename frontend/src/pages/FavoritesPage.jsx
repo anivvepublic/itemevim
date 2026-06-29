@@ -10,7 +10,7 @@ export default function FavoritesPage() {
     <div>
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
       <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700 mb-8">
@@ -30,14 +30,14 @@ export default function FavoritesPage() {
           {favorites.length > 0 && (
             <button
               onClick={() => {
-                if (window.confirm('Tüm favorileri silmek istediğinize emin misiniz?')) {
+                if (window.confirm('TÃ¼m favorileri silmek istediÄŸinize emin misiniz?')) {
                   clearFavorites();
                 }
               }}
               className="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-all border border-red-500/30"
             >
               <Trash2 className="w-4 h-4" />
-              Tümünü Temizle
+              TÃ¼mÃ¼nÃ¼ Temizle
             </button>
           )}
         </div>
@@ -46,15 +46,15 @@ export default function FavoritesPage() {
       {favorites.length === 0 ? (
         <div className="bg-dark-800 rounded-xl border border-dark-700 p-12 text-center">
           <Heart className="w-16 h-16 text-text-muted mx-auto mb-4 opacity-30" />
-          <h2 className="text-xl font-bold text-white mb-2">Henüz favori ilan yok</h2>
+          <h2 className="text-xl font-bold text-white mb-2">HenÃ¼z favori ilan yok</h2>
           <p className="text-text-muted mb-6">
-            Beğendiğin ilanları kalp ikonuna tıklayarak favorilerine ekleyebilirsin.
+            BeÄŸendiÄŸin ilanlarÄ± kalp ikonuna tÄ±klayarak favorilerine ekleyebilirsin.
           </p>
           <Link 
             to="/"
             className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-semibold transition-all"
           >
-            İlanlara Göz At
+            Ä°lanlara GÃ¶z At
           </Link>
         </div>
       ) : (

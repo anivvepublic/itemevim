@@ -13,7 +13,7 @@ export default function LatestListings({ listings }) {
         <div className="flex items-center gap-2">
           <Clock className="w-6 h-6 text-primary" />
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">En Yeni İlanlar</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">En Yeni Ä°lanlar</h2>
             <p className="text-text-muted text-sm">Yeni eklenen ilanlar</p>
           </div>
         </div>
@@ -21,7 +21,7 @@ export default function LatestListings({ listings }) {
           to="/search" 
           className="text-primary hover:text-primaryHover text-sm font-medium transition-colors flex items-center gap-1 group"
         >
-          Tümünü Gör
+          TÃ¼mÃ¼nÃ¼ GÃ¶r
           <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

@@ -34,12 +34,12 @@ export default function OrdersPage() {
           const userId = users[0].id;
           setCurrentUserId(userId);
 
-          // Alışverişleri getir
+          // AlÄ±ÅŸveriÅŸleri getir
           const purchasesRes = await fetch(`/api/orders/buyer/${userId}`);
           const purchasesData = await purchasesRes.json();
           setPurchases(Array.isArray(purchasesData) ? purchasesData : []);
 
-          // Satışları getir
+          // SatÄ±ÅŸlarÄ± getir
           const salesRes = await fetch(`/api/orders/seller/${userId}`);
           const salesData = await salesRes.json();
           setSales(Array.isArray(salesData) ? salesData : []);
@@ -57,10 +57,10 @@ export default function OrdersPage() {
   const getStatusBadge = (status) => {
     const badges = {
       pending: { label: 'Beklemede', color: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30', icon: <Clock className="w-3 h-3" /> },
-      completed: { label: 'Tamamlandı', color: 'bg-green-500/10 text-green-400 border-green-500/30', icon: <CheckCircle className="w-3 h-3" /> },
-      cancelled: { label: 'İptal', color: 'bg-red-500/10 text-red-400 border-red-500/30', icon: <XCircle className="w-3 h-3" /> },
-      refunded: { label: 'İade', color: 'bg-blue-500/10 text-blue-400 border-blue-500/30', icon: <Clock className="w-3 h-3" /> },
-      sold: { label: 'Satıldı', color: 'bg-primary/10 text-primary border-primary/30', icon: <CheckCircle className="w-3 h-3" /> }
+      completed: { label: 'TamamlandÄ±', color: 'bg-green-500/10 text-green-400 border-green-500/30', icon: <CheckCircle className="w-3 h-3" /> },
+      cancelled: { label: 'Ä°ptal', color: 'bg-red-500/10 text-red-400 border-red-500/30', icon: <XCircle className="w-3 h-3" /> },
+      refunded: { label: 'Ä°ade', color: 'bg-blue-500/10 text-blue-400 border-blue-500/30', icon: <Clock className="w-3 h-3" /> },
+      sold: { label: 'SatÄ±ldÄ±', color: 'bg-primary/10 text-primary border-primary/30', icon: <CheckCircle className="w-3 h-3" /> }
     };
     
     const badge = badges[status] || badges.pending;
@@ -87,7 +87,7 @@ export default function OrdersPage() {
     return (
       <div className="text-center py-16">
         <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-text-muted mt-4">Yükleniyor...</p>
+        <p className="text-text-muted mt-4">YÃ¼kleniyor...</p>
       </div>
     );
   }
@@ -98,18 +98,18 @@ export default function OrdersPage() {
     <div className="max-w-5xl mx-auto">
       <Link to="/" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Ana Sayfaya Dön
+        Ana Sayfaya DÃ¶n
       </Link>
 
       <div className="bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden">
-        {/* Başlık */}
+        {/* BaÅŸlÄ±k */}
         <div className="p-6 border-b border-dark-700">
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <Package className="w-6 h-6 text-primary" />
-            Siparişlerim
+            SipariÅŸlerim
           </h1>
           <p className="text-text-muted text-sm mt-1">
-            Alışveriş ve satış geçmişinizi buradan takip edebilirsiniz
+            AlÄ±ÅŸveriÅŸ ve satÄ±ÅŸ geÃ§miÅŸinizi buradan takip edebilirsiniz
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default function OrdersPage() {
             }`}
           >
             <ShoppingBag className="w-4 h-4" />
-            Alışverişlerim ({purchases.length})
+            AlÄ±ÅŸveriÅŸlerim ({purchases.length})
           </button>
           <button
             onClick={() => setActiveTab('sales')}
@@ -135,41 +135,41 @@ export default function OrdersPage() {
             }`}
           >
             <Package className="w-4 h-4" />
-            Satışlarım ({sales.length})
+            SatÄ±ÅŸlarÄ±m ({sales.length})
           </button>
         </div>
 
-        {/* İçerik */}
+        {/* Ä°Ã§erik */}
         <div className="p-6">
           {loading ? (
             <div className="text-center py-16">
               <div className="inline-block w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-text-muted mt-4">Yükleniyor...</p>
+              <p className="text-text-muted mt-4">YÃ¼kleniyor...</p>
             </div>
           ) : orders.length === 0 ? (
             <div className="text-center py-16">
               {activeTab === 'purchases' ? (
                 <>
                   <ShoppingBag className="w-16 h-16 text-text-muted mx-auto mb-4 opacity-30" />
-                  <h2 className="text-xl font-bold text-white mb-2">Henüz alışveriş yapmadınız</h2>
-                  <p className="text-text-muted mb-6">Beğendiğiniz ilanları satın alın.</p>
+                  <h2 className="text-xl font-bold text-white mb-2">HenÃ¼z alÄ±ÅŸveriÅŸ yapmadÄ±nÄ±z</h2>
+                  <p className="text-text-muted mb-6">BeÄŸendiÄŸiniz ilanlarÄ± satÄ±n alÄ±n.</p>
                   <Link 
                     to="/"
                     className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-semibold transition-all"
                   >
-                    İlanlara Göz At
+                    Ä°lanlara GÃ¶z At
                   </Link>
                 </>
               ) : (
                 <>
                   <Package className="w-16 h-16 text-text-muted mx-auto mb-4 opacity-30" />
-                  <h2 className="text-xl font-bold text-white mb-2">Henüz satışınız yok</h2>
-                  <p className="text-text-muted mb-6">İlan vererek satış yapmaya başlayın.</p>
+                  <h2 className="text-xl font-bold text-white mb-2">HenÃ¼z satÄ±ÅŸÄ±nÄ±z yok</h2>
+                  <p className="text-text-muted mb-6">Ä°lan vererek satÄ±ÅŸ yapmaya baÅŸlayÄ±n.</p>
                   <Link 
                     to="/create-listing"
                     className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-semibold transition-all"
                   >
-                    İlk İlanını Ver
+                    Ä°lk Ä°lanÄ±nÄ± Ver
                   </Link>
                 </>
               )}
@@ -182,7 +182,7 @@ export default function OrdersPage() {
                   className="bg-dark-900 rounded-xl border border-dark-700 p-5 hover:border-primary/30 transition-all"
                 >
                   <div className="flex gap-4">
-                    {/* Görsel */}
+                    {/* GÃ¶rsel */}
                     <Link to={`/listing/${order.listing?.id}`} className="flex-shrink-0">
                       <img 
                         src={order.listing?.image}
@@ -208,9 +208,9 @@ export default function OrdersPage() {
                           {formatDate(order.created_at)}
                         </div>
                         {activeTab === 'purchases' ? (
-                          <div>Satıcı: <span className="text-white">{order.seller?.username}</span></div>
+                          <div>SatÄ±cÄ±: <span className="text-white">{order.seller?.username}</span></div>
                         ) : (
-                          <div>Alıcı: <span className="text-white">{order.buyer?.username}</span></div>
+                          <div>AlÄ±cÄ±: <span className="text-white">{order.buyer?.username}</span></div>
                         )}
                       </div>
 
@@ -219,7 +219,7 @@ export default function OrdersPage() {
                           {order.listing?.category_slug?.toUpperCase()}
                         </span>
                         <span className="text-xl font-bold text-white">
-                          ₺{parseFloat(order.amount).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+                          â‚º{parseFloat(order.amount).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
                         </span>
                       </div>
                     </div>

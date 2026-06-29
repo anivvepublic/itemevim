@@ -16,7 +16,7 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState('confirm'); // confirm, processing, success
   
-  // 🆕 E-posta teslimat seçenekleri
+  // ðŸ†• E-posta teslimat seÃ§enekleri
   const [deliveryOption, setDeliveryOption] = useState('current'); // 'current' veya 'other'
   const [customEmail, setCustomEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -61,7 +61,7 @@ export default function CheckoutPage() {
     setCustomEmail(email);
     
     if (email && !validateEmail(email)) {
-      setEmailError('Geçerli bir e-posta adresi girin');
+      setEmailError('GeÃ§erli bir e-posta adresi girin');
     } else {
       setEmailError('');
     }
@@ -75,16 +75,16 @@ export default function CheckoutPage() {
   };
 
   const handlePurchase = async () => {
-    // E-posta kontrolü
+    // E-posta kontrolÃ¼
     const deliveryEmail = getDeliveryEmail();
     
     if (deliveryOption === 'other' && !customEmail) {
-      addToast('Lütfen teslimat e-posta adresini girin', 'warning');
+      addToast('LÃ¼tfen teslimat e-posta adresini girin', 'warning');
       return;
     }
 
     if (deliveryOption === 'other' && !validateEmail(customEmail)) {
-      addToast('Geçerli bir e-posta adresi girin', 'error');
+      addToast('GeÃ§erli bir e-posta adresi girin', 'error');
       return;
     }
 
@@ -113,14 +113,14 @@ export default function CheckoutPage() {
         const data = await res.json();
         
         if (!res.ok) {
-          throw new Error(data.error || `İlan satın alınamadı: ${item.title}`);
+          throw new Error(data.error || `Ä°lan satÄ±n alÄ±namadÄ±: ${item.title}`);
         }
         
         results.push(data);
       }
 
       setStep('success');
-      addToast(`${results.length} ilan başarıyla satın alındı!`, 'success', 5000);
+      addToast(`${results.length} ilan baÅŸarÄ±yla satÄ±n alÄ±ndÄ±!`, 'success', 5000);
       
       clearCart();
 
@@ -142,12 +142,12 @@ export default function CheckoutPage() {
       <div className="max-w-2xl mx-auto px-4 py-16">
         <div className="bg-dark-800 rounded-2xl p-12 border border-dark-700 text-center">
           <Loader2 className="w-16 h-16 text-primary mx-auto mb-6 animate-spin" />
-          <h2 className="text-2xl font-bold text-white mb-3">İşlem Gerçekleştiriliyor</h2>
+          <h2 className="text-2xl font-bold text-white mb-3">Ä°ÅŸlem GerÃ§ekleÅŸtiriliyor</h2>
           <p className="text-text-muted mb-4">
-            Lütfen bekleyin, siparişiniz işleniyor...
+            LÃ¼tfen bekleyin, sipariÅŸiniz iÅŸleniyor...
           </p>
           <p className="text-text-muted text-sm">
-            Bu işlem birkaç saniye sürebilir. Lütfen sayfayı kapatmayın.
+            Bu iÅŸlem birkaÃ§ saniye sÃ¼rebilir. LÃ¼tfen sayfayÄ± kapatmayÄ±n.
           </p>
         </div>
       </div>
@@ -159,21 +159,21 @@ export default function CheckoutPage() {
       <div className="max-w-2xl mx-auto px-4 py-16">
         <div className="bg-dark-800 rounded-2xl p-12 border border-green-500/30 text-center">
           <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
-          <h2 className="text-3xl font-bold text-white mb-3">Satın Alma Başarılı!</h2>
+          <h2 className="text-3xl font-bold text-white mb-3">SatÄ±n Alma BaÅŸarÄ±lÄ±!</h2>
           <p className="text-text-muted mb-6">
-            {cart.length} ilan başarıyla satın alındı.
+            {cart.length} ilan baÅŸarÄ±yla satÄ±n alÄ±ndÄ±.
           </p>
           <div className="bg-green-500/10 rounded-xl p-4 border border-green-500/30 mb-6">
             <p className="text-green-400 text-sm flex items-center justify-center gap-2">
               <Mail className="w-4 h-4" />
-              Hesap bilgileri <span className="font-bold text-white">{getDeliveryEmail()}</span> adresine gönderilecek.
+              Hesap bilgileri <span className="font-bold text-white">{getDeliveryEmail()}</span> adresine gÃ¶nderilecek.
             </p>
           </div>
           <Link 
             to="/orders"
             className="inline-block bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-semibold transition-all"
           >
-            Siparişlerimi Gör
+            SipariÅŸlerimi GÃ¶r
           </Link>
         </div>
       </div>
@@ -184,15 +184,15 @@ export default function CheckoutPage() {
     <div className="max-w-4xl mx-auto">
       <Link to="/cart" className="inline-flex items-center gap-2 text-text-muted hover:text-white mb-6 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Sepete Dön
+        Sepete DÃ¶n
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Sol: Özet + E-posta Seçimi */}
+        {/* Sol: Ã–zet + E-posta SeÃ§imi */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Ürün Listesi */}
+          {/* ÃœrÃ¼n Listesi */}
           <div className="bg-dark-800 rounded-2xl border border-dark-700 p-8">
-            <h1 className="text-2xl font-bold text-white mb-6">Sipariş Onayı</h1>
+            <h1 className="text-2xl font-bold text-white mb-6">SipariÅŸ OnayÄ±</h1>
 
             <div className="space-y-4 mb-6">
               {cart.map(item => (
@@ -205,10 +205,10 @@ export default function CheckoutPage() {
                   <div className="flex-1 min-w-0">
                     <h3 className="text-white font-semibold line-clamp-2">{item.title}</h3>
                     <p className="text-text-muted text-sm mt-1">
-                      {item.category_slug?.toUpperCase()} • {item.seller?.username}
+                      {item.category_slug?.toUpperCase()} â€¢ {item.seller?.username}
                     </p>
                     <p className="text-white font-bold mt-2">
-                      ₺{parseFloat(item.price).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+                      â‚º{parseFloat(item.price).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
                     </p>
                   </div>
                 </div>
@@ -216,18 +216,18 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          {/* 🆕 TESLİMAT E-POSTA SEÇİMİ */}
+          {/* ðŸ†• TESLÄ°MAT E-POSTA SEÃ‡Ä°MÄ° */}
           <div className="bg-dark-800 rounded-2xl border border-dark-700 p-8">
             <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
               <Mail className="w-5 h-5 text-primary" />
               Teslimat Bilgileri
             </h2>
             <p className="text-text-muted text-sm mb-6">
-              Satın aldığınız hesapların giriş bilgileri hangi e-posta adresine gönderilsin?
+              SatÄ±n aldÄ±ÄŸÄ±nÄ±z hesaplarÄ±n giriÅŸ bilgileri hangi e-posta adresine gÃ¶nderilsin?
             </p>
 
             <div className="space-y-3">
-              {/* Seçenek 1: Mevcut E-posta */}
+              {/* SeÃ§enek 1: Mevcut E-posta */}
               <label 
                 className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
                   deliveryOption === 'current'
@@ -245,8 +245,8 @@ export default function CheckoutPage() {
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-white font-semibold">Mevcut hesabıma gönder</span>
-                    <span className="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded">Önerilen</span>
+                    <span className="text-white font-semibold">Mevcut hesabÄ±ma gÃ¶nder</span>
+                    <span className="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded">Ã–nerilen</span>
                   </div>
                   <p className="text-text-muted text-sm flex items-center gap-1">
                     <AtSign className="w-3.5 h-3.5" />
@@ -255,7 +255,7 @@ export default function CheckoutPage() {
                 </div>
               </label>
 
-              {/* Seçenek 2: Başka E-posta */}
+              {/* SeÃ§enek 2: BaÅŸka E-posta */}
               <label 
                 className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
                   deliveryOption === 'other'
@@ -272,9 +272,9 @@ export default function CheckoutPage() {
                   className="mt-1 w-4 h-4 text-primary focus:ring-primary bg-dark-800 border-dark-600"
                 />
                 <div className="flex-1">
-                  <div className="text-white font-semibold mb-1">Farklı bir e-postaya gönder</div>
+                  <div className="text-white font-semibold mb-1">FarklÄ± bir e-postaya gÃ¶nder</div>
                   <p className="text-text-muted text-sm">
-                    Arkadaşına veya başka bir e-posta adresine teslim edebilirsin
+                    ArkadaÅŸÄ±na veya baÅŸka bir e-posta adresine teslim edebilirsin
                   </p>
                   
                   {deliveryOption === 'other' && (
@@ -292,7 +292,7 @@ export default function CheckoutPage() {
                       />
                       {emailError && (
                         <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
-                          ⚠️ {emailError}
+                          âš ï¸ {emailError}
                         </p>
                       )}
                     </div>
@@ -304,57 +304,57 @@ export default function CheckoutPage() {
             <div className="mt-4 p-3 bg-yellow-500/5 border border-yellow-500/20 rounded-lg">
               <p className="text-yellow-400 text-xs flex items-start gap-2">
                 <Shield className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                <span>Güvenlik notu: Hesap bilgileri sadece belirttiğiniz e-posta adresine gönderilecektir. Başka kimse erişemez.</span>
+                <span>GÃ¼venlik notu: Hesap bilgileri sadece belirttiÄŸiniz e-posta adresine gÃ¶nderilecektir. BaÅŸka kimse eriÅŸemez.</span>
               </p>
             </div>
           </div>
 
-          {/* Güven Bilgileri */}
+          {/* GÃ¼ven Bilgileri */}
           <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 space-y-3">
             <h3 className="text-white font-semibold flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
-              Güvenli Alışveriş Garantisi
+              GÃ¼venli AlÄ±ÅŸveriÅŸ Garantisi
             </h3>
             <ul className="space-y-2 text-text-muted text-sm">
               <li className="flex items-start gap-2">
                 <Lock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>Ödemeniz 256-bit SSL ile şifrelenir</span>
+                <span>Ã–demeniz 256-bit SSL ile ÅŸifrelenir</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>Hesap bilgileri teslim edilene kadar paranız güvende</span>
+                <span>Hesap bilgileri teslim edilene kadar paranÄ±z gÃ¼vende</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>Sorun yaşarsanız 7/24 destek ekibimiz yanınızda</span>
+                <span>Sorun yaÅŸarsanÄ±z 7/24 destek ekibimiz yanÄ±nÄ±zda</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Sağ: Ödeme */}
+        {/* SaÄŸ: Ã–deme */}
         <div className="lg:col-span-1">
           <div className="bg-dark-800 rounded-2xl border border-dark-700 p-6 sticky top-24">
-            <h2 className="text-xl font-bold text-white mb-6">Ödeme Özeti</h2>
+            <h2 className="text-xl font-bold text-white mb-6">Ã–deme Ã–zeti</h2>
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between text-text-muted">
                 <span>Ara Toplam</span>
-                <span>₺{cartTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
+                <span>â‚º{cartTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
               </div>
               <div className="flex justify-between text-text-muted">
                 <span>Hizmet Bedeli (%5)</span>
-                <span>₺{serviceFee.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
+                <span>â‚º{serviceFee.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
               </div>
               <div className="border-t border-dark-700 pt-3 flex justify-between">
                 <span className="text-white font-semibold">Toplam</span>
                 <span className="text-2xl font-bold text-primary">
-                  ₺{grandTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
+                  â‚º{grandTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
             </div>
 
-            {/* Teslimat Bilgisi Özet */}
+            {/* Teslimat Bilgisi Ã–zet */}
             <div className="bg-dark-900 rounded-xl p-3 mb-4 border border-dark-700">
               <div className="flex items-start gap-2 text-xs">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
@@ -369,17 +369,17 @@ export default function CheckoutPage() {
             <div className="bg-dark-900 rounded-xl p-4 mb-4 border border-dark-700">
               <div className="flex justify-between text-sm">
                 <span className="text-text-muted">Mevcut Bakiye</span>
-                <span className="text-white font-semibold">₺{userBalance.toFixed(2)}</span>
+                <span className="text-white font-semibold">â‚º{userBalance.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm mt-2">
-                <span className="text-text-muted">Ödeme Sonrası</span>
+                <span className="text-text-muted">Ã–deme SonrasÄ±</span>
                 <span className="text-white font-semibold">
-                  ₺{(userBalance - grandTotal).toFixed(2)}
+                  â‚º{(userBalance - grandTotal).toFixed(2)}
                 </span>
               </div>
             </div>
 
-            {/* Satın Al Butonu */}
+            {/* SatÄ±n Al Butonu */}
             <button
               onClick={handlePurchase}
               disabled={
@@ -392,18 +392,18 @@ export default function CheckoutPage() {
               {loading ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  İşleniyor...
+                  Ä°ÅŸleniyor...
                 </>
               ) : (
                 <>
                   <Lock className="w-5 h-5" />
-                  Ödemeyi Onayla
+                  Ã–demeyi Onayla
                 </>
               )}
             </button>
 
             <p className="text-text-muted text-xs text-center mt-3">
-              Ödeme yaparak <Link to="/terms" className="text-primary hover:underline">kullanım şartlarını</Link> kabul etmiş olursunuz.
+              Ã–deme yaparak <Link to="/terms" className="text-primary hover:underline">kullanÄ±m ÅŸartlarÄ±nÄ±</Link> kabul etmiÅŸ olursunuz.
             </p>
           </div>
         </div>

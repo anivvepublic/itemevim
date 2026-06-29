@@ -4,22 +4,22 @@ export default function TrustBanner() {
   const features = [
     {
       icon: <Shield className="w-6 h-6" />,
-      title: '%100 Güvenli',
-      description: 'Tüm işlemler SSL ile şifrelenir'
+      title: '%100 GÃ¼venli',
+      description: 'TÃ¼m iÅŸlemler SSL ile ÅŸifrelenir'
     },
     {
       icon: <Lock className="w-6 h-6" />,
       title: 'Para Koruma',
-      description: 'Hesap teslim edilene kadar paranız güvende'
+      description: 'Hesap teslim edilene kadar paranÄ±z gÃ¼vende'
     },
     {
       icon: <Award className="w-6 h-6" />,
-      title: 'Onaylı Satıcılar',
-      description: 'Kimlik doğrulaması yapılmış satıcılar'
+      title: 'OnaylÄ± SatÄ±cÄ±lar',
+      description: 'Kimlik doÄŸrulamasÄ± yapÄ±lmÄ±ÅŸ satÄ±cÄ±lar'
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: '75.000+ Kullanıcı',
+      title: '75.000+ KullanÄ±cÄ±',
       description: 'Binlerce mutlu oyuncunun tercihi'
     }
   ];
@@ -31,7 +31,7 @@ export default function TrustBanner() {
           Neden Itemevim?
         </h2>
         <p className="text-text-muted text-sm">
-          Güvenli alışverişin adresi
+          GÃ¼venli alÄ±ÅŸveriÅŸin adresi
         </p>
       </div>
 

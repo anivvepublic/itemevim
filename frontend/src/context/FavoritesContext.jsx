@@ -12,7 +12,7 @@ export function useFavorites() {
 export function FavoritesProvider({ children }) {
   const { addToast } = useToast();
   
-  // ✅ FIX: Initial state'i localStorage'dan oku
+  // âœ… FIX: Initial state'i localStorage'dan oku
   const [favorites, setFavorites] = useState(() => {
     try {
       const saved = localStorage.getItem('itemevim_favorites');
@@ -32,10 +32,10 @@ export function FavoritesProvider({ children }) {
     
     if (exists) {
       setFavorites(prev => prev.filter(f => f.id !== listing.id));
-      addToast('Favorilerden çıkarıldı', 'info', 2000);
+      addToast('Favorilerden Ã§Ä±karÄ±ldÄ±', 'info', 2000);
     } else {
       setFavorites(prev => [...prev, listing]);
-      addToast('Favorilere eklendi ❤️', 'success', 2000);
+      addToast('Favorilere eklendi â¤ï¸', 'success', 2000);
     }
   };
 
@@ -45,7 +45,7 @@ export function FavoritesProvider({ children }) {
 
   const clearFavorites = () => {
     setFavorites([]);
-    addToast('Tüm favoriler temizlendi', 'info');
+    addToast('TÃ¼m favoriler temizlendi', 'info');
   };
 
   return (

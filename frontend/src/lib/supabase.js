@@ -5,7 +5,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Debug log
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('❌ Supabase bilgileri eksik!');
+  console.error('âŒ Supabase bilgileri eksik!');
   console.error('URL:', supabaseUrl);
   console.error('Key:', supabaseAnonKey ? 'Var' : 'YOK');
 }

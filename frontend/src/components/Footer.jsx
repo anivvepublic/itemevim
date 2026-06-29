@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-dark-900 border-t border-dark-700 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo ve Açıklama */}
+          {/* Logo ve AÃ§Ä±klama */}
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center">
@@ -19,7 +19,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-text-muted text-sm leading-relaxed mb-4">
-              Türkiye'nin en güvenilir oyun hesabı ve item marketplace'i. Binlerce oyuncunun tercihi.
+              TÃ¼rkiye'nin en gÃ¼venilir oyun hesabÄ± ve item marketplace'i. Binlerce oyuncunun tercihi.
             </p>
             <div className="flex gap-3">
               <a href="#" className="w-9 h-9 rounded-lg bg-dark-800 hover:bg-primary flex items-center justify-center text-text-muted hover:text-white transition-colors">
@@ -34,11 +34,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Hızlı Linkler */}
+          {/* HÄ±zlÄ± Linkler */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Hızlı Linkler</h3>
+            <h3 className="text-white font-semibold mb-4">HÄ±zlÄ± Linkler</h3>
             <ul className="space-y-2.5">
-              {['Ana Sayfa', 'Kategoriler', 'Öne Çıkan İlanlar', 'İlan Ver', 'Nasıl Çalışır?'].map((item) => (
+              {['Ana Sayfa', 'Kategoriler', 'Ã–ne Ã‡Ä±kan Ä°lanlar', 'Ä°lan Ver', 'NasÄ±l Ã‡alÄ±ÅŸÄ±r?'].map((item) => (
                 <li key={item}>
                   <Link to="/" className="text-text-muted hover:text-primary text-sm transition-colors">
                     {item}
@@ -52,7 +52,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Destek</h3>
             <ul className="space-y-2.5">
-              {['SSS', 'Güvenli Alışveriş', 'İade Politikası', 'Gizlilik', 'Kullanım Şartları'].map((item) => (
+              {['SSS', 'GÃ¼venli AlÄ±ÅŸveriÅŸ', 'Ä°ade PolitikasÄ±', 'Gizlilik', 'KullanÄ±m ÅžartlarÄ±'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-text-muted hover:text-primary text-sm transition-colors">
                     {item}
@@ -62,9 +62,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* İletişim */}
+          {/* Ä°letiÅŸim */}
           <div>
-            <h3 className="text-white font-semibold mb-4">İletişim</h3>
+            <h3 className="text-white font-semibold mb-4">Ä°letiÅŸim</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm text-text-muted">
                 <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -72,11 +72,11 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5 text-sm text-text-muted">
                 <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>7/24 Canlı Destek</span>
+                <span>7/24 CanlÄ± Destek</span>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-text-muted">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>İstanbul, Türkiye</span>
+                <span>Ä°stanbul, TÃ¼rkiye</span>
               </li>
             </ul>
           </div>
@@ -85,12 +85,12 @@ export default function Footer() {
         {/* Alt Bar */}
         <div className="border-t border-dark-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-text-muted text-sm">
-            © 2026 itemevim. Tüm hakları saklıdır.
+            Â© 2026 itemevim. TÃ¼m haklarÄ± saklÄ±dÄ±r.
           </p>
           <div className="flex items-center gap-4 text-sm text-text-muted">
             <a href="#" className="hover:text-primary transition-colors">Gizlilik</a>
-            <a href="#" className="hover:text-primary transition-colors">Şartlar</a>
-            <a href="#" className="hover:text-primary transition-colors">Çerezler</a>
+            <a href="#" className="hover:text-primary transition-colors">Åžartlar</a>
+            <a href="#" className="hover:text-primary transition-colors">Ã‡erezler</a>
           </div>
         </div>
       </div>

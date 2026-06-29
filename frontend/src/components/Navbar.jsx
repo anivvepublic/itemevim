@@ -68,7 +68,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setProfileOpen(false);
-    addToast('Başarıyla çıkış yapıldı', 'success');
+    addToast('BaÅŸarÄ±yla Ã§Ä±kÄ±ÅŸ yapÄ±ldÄ±', 'success');
     navigate('/');
   };
 
@@ -84,7 +84,7 @@ export default function Navbar() {
           notifications: prev.notifications.map(n => ({ ...n, is_read: true })),
           unreadCount: 0
         }));
-        addToast('Tüm bildirimler okundu', 'success', 2000);
+        addToast('TÃ¼m bildirimler okundu', 'success', 2000);
       }
     } catch (err) {
       console.error('Mark all read error:', err);
@@ -93,15 +93,15 @@ export default function Navbar() {
 
   const getNotificationIcon = (type) => {
     switch (type) {
-      case 'success': return '✅';
-      case 'order': return '📦';
-      case 'message': return '💬';
-      case 'warning': return '⚠️';
+      case 'success': return 'âœ…';
+      case 'order': return 'ðŸ“¦';
+      case 'message': return 'ðŸ’¬';
+      case 'warning': return 'âš ï¸';
       default: return '';
     }
   };
 
-  const username = currentUser?.email?.split('@')[0] || 'Kullanıcı';
+  const username = currentUser?.email?.split('@')[0] || 'KullanÄ±cÄ±';
 
   return (
     <nav className="bg-dark-900 border-b border-dark-700 sticky top-0 z-50 backdrop-blur-sm bg-dark-900/95">
@@ -128,20 +128,20 @@ export default function Navbar() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Ürün, oyun veya kategori ara..."
+                placeholder="ÃœrÃ¼n, oyun veya kategori ara..."
                 className="w-full bg-dark-800 text-white text-sm pl-10 pr-4 py-2.5 rounded-lg border border-dark-700 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-text-muted"
               />
             </div>
           </form>
 
-          {/* Sağ Taraf */}
+          {/* SaÄŸ Taraf */}
           <div className="hidden md:flex items-center gap-3">
             <Link 
               to="/create-listing"
               className="bg-primary hover:bg-primaryHover text-white px-5 py-2.5 rounded-lg font-semibold text-sm flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-primary/30"
             >
               <Plus className="w-4 h-4" />
-              İlan Ver
+              Ä°lan Ver
             </Link>
             
             <div className="flex items-center gap-1 text-text-muted ml-2">
@@ -185,7 +185,7 @@ export default function Navbar() {
                               className="text-primary hover:text-primaryHover text-xs font-medium flex items-center gap-1"
                             >
                               <CheckCheck className="w-3 h-3" />
-                              Tümünü Oku
+                              TÃ¼mÃ¼nÃ¼ Oku
                             </button>
                           )}
                         </div>
@@ -194,7 +194,7 @@ export default function Navbar() {
                           {notifications.notifications.length === 0 ? (
                             <div className="p-8 text-center">
                               <Bell className="w-10 h-10 text-text-muted mx-auto mb-2 opacity-30" />
-                              <p className="text-text-muted text-sm">Henüz bildirim yok</p>
+                              <p className="text-text-muted text-sm">HenÃ¼z bildirim yok</p>
                             </div>
                           ) : (
                             notifications.notifications.map(notif => (
@@ -250,7 +250,7 @@ export default function Navbar() {
                     </div>
                     <div className="text-left hidden lg:block">
                       <div className="text-white text-xs font-medium">{username}</div>
-                      <div className="text-text-muted text-[10px]">Hesabım</div>
+                      <div className="text-text-muted text-[10px]">HesabÄ±m</div>
                     </div>
                     <ChevronDown className={`w-3 h-3 text-text-muted transition-transform ${profileOpen ? 'rotate-180' : ''}`} />
                   </button>
@@ -271,11 +271,11 @@ export default function Navbar() {
                           </Link>
                           <Link to="/profile?tab=listings" onClick={() => setProfileOpen(false)} className="flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-white hover:bg-dark-700 transition-colors">
                             <Package className="w-4 h-4" />
-                            İlanlarım
+                            Ä°lanlarÄ±m
                           </Link>
                           <Link to="/orders" onClick={() => setProfileOpen(false)} className="flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-white hover:bg-dark-700 transition-colors">
                             <ShoppingCart className="w-4 h-4" />
-                            Siparişlerim
+                            SipariÅŸlerim
                           </Link>
                           <Link to="/favorites" onClick={() => setProfileOpen(false)} className="flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-white hover:bg-dark-700 transition-colors">
                             <Heart className="w-4 h-4" />
@@ -295,7 +295,7 @@ export default function Navbar() {
                         <div className="border-t border-dark-700 py-1">
                           <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors">
                             <LogOut className="w-4 h-4" />
-                            Çıkış Yap
+                            Ã‡Ä±kÄ±ÅŸ Yap
                           </button>
                         </div>
                       </div>
@@ -308,15 +308,15 @@ export default function Navbar() {
                     <User className="w-4 h-4 text-white" />
                   </div>
                   <div className="text-left hidden lg:block">
-                    <div className="text-white text-xs font-medium">Hesabım</div>
-                    <div className="text-text-muted text-[10px]">Giriş Yap / Kayıt Ol</div>
+                    <div className="text-white text-xs font-medium">HesabÄ±m</div>
+                    <div className="text-text-muted text-[10px]">GiriÅŸ Yap / KayÄ±t Ol</div>
                   </div>
                 </Link>
               )}
             </div>
           </div>
 
-          {/* Mobil Menü */}
+          {/* Mobil MenÃ¼ */}
           <button 
             className="md:hidden text-white p-2 hover:bg-dark-800 rounded-lg transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -340,7 +340,7 @@ export default function Navbar() {
         </form>
       </div>
 
-      {/* Mobil Menü */}
+      {/* Mobil MenÃ¼ */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-dark-800 border-t border-dark-700 px-4 py-4 space-y-3">
           {currentUser ? (
@@ -355,24 +355,24 @@ export default function Navbar() {
                 </div>
               </div>
               <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">Profilim</Link>
-              <Link to="/orders" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">Siparişlerim</Link>
+              <Link to="/orders" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">SipariÅŸlerim</Link>
               <Link to="/favorites" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">Favorilerim</Link>
               <Link to="/cart" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">
                 Sepetim {cartCount > 0 && `(${cartCount})`}
               </Link>
-              <Link to="/create-listing" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">İlan Ver</Link>
-              <button onClick={handleLogout} className="w-full text-left text-red-400 py-2">Çıkış Yap</button>
+              <Link to="/create-listing" onClick={() => setMobileMenuOpen(false)} className="block text-white py-2">Ä°lan Ver</Link>
+              <button onClick={handleLogout} className="w-full text-left text-red-400 py-2">Ã‡Ä±kÄ±ÅŸ Yap</button>
             </>
           ) : (
             <>
-              <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="block bg-primary text-white text-center py-3 rounded-lg font-semibold">Giriş Yap / Kayıt Ol</Link>
-              <Link to="/create-listing" onClick={() => setMobileMenuOpen(false)} className="block text-white text-center py-2">İlan Ver</Link>
+              <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="block bg-primary text-white text-center py-3 rounded-lg font-semibold">GiriÅŸ Yap / KayÄ±t Ol</Link>
+              <Link to="/create-listing" onClick={() => setMobileMenuOpen(false)} className="block text-white text-center py-2">Ä°lan Ver</Link>
             </>
           )}
         </div>
       )}
 
-      {/* Alt Menü */}
+      {/* Alt MenÃ¼ */}
       <div className="border-t border-dark-700 bg-dark-900/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 h-11 text-sm overflow-x-auto scrollbar-hide">
@@ -393,7 +393,7 @@ export default function Navbar() {
             <Link to="/category/pubg" className="text-text-muted hover:text-white transition-colors whitespace-nowrap px-3 py-1.5 rounded-md hover:bg-dark-800">PUBG</Link>
             <Link to="/category/youtube" className="text-text-muted hover:text-white transition-colors whitespace-nowrap px-3 py-1.5 rounded-md hover:bg-dark-800">YouTube</Link>
             <Link to="/categories" className="ml-auto text-primary hover:text-primaryHover transition-colors whitespace-nowrap px-3 py-1.5 rounded-md hover:bg-dark-800 font-medium">
-              Tüm Kategoriler →
+              TÃ¼m Kategoriler â†’
             </Link>
           </div>
         </div>
