@@ -6,10 +6,9 @@ import { createClient } from '@supabase/supabase-js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: ['http://localhost:1919', 'http://127.0.0.1:1919', 'https://itemevim.vercel.app', 'https://itemevim-*.vercel.app'],
+  origin: true,
   credentials: true
 }));
 
@@ -21,7 +20,6 @@ const supabase = createClient(
 );
 
 // ============ HEALTH CHECK ============
-
 app.get('/api/health', async (req, res) => {
   try {
     const { error } = await supabase.from('categories').select('*', { count: 'exact', head: true });
@@ -36,7 +34,6 @@ app.get('/api/health', async (req, res) => {
 });
 
 // ============ KATEGORİLER ============
-
 app.get('/api/categories', async (req, res) => {
   try {
     const { data, error } = await supabase
@@ -86,7 +83,6 @@ app.get('/api/categories/all', async (req, res) => {
 });
 
 // ============ İLAN ARAMA ============
-
 app.get('/api/listings/search', async (req, res) => {
   try {
     const { q, limit = 50 } = req.query;
@@ -115,7 +111,6 @@ app.get('/api/listings/search', async (req, res) => {
 });
 
 // ============ İLAN LİSTELERİ ============
-
 app.get('/api/listings/featured', async (req, res) => {
   try {
     const { data, error } = await supabase
@@ -237,7 +232,6 @@ app.get('/api/listings/:id', async (req, res) => {
   }
 });
 
-// İlan görüntülenme sayısını artır
 app.post('/api/listings/:id/view', async (req, res) => {
   try {
     const { data: current } = await supabase
@@ -258,7 +252,6 @@ app.post('/api/listings/:id/view', async (req, res) => {
   }
 });
 
-// İlan raporla
 app.post('/api/listings/:id/report', async (req, res) => {
   try {
     const { reason, description } = req.body;
@@ -360,7 +353,6 @@ app.get('/api/users/:id/listings', async (req, res) => {
 });
 
 // ============ İLAN CRUD ============
-
 app.post('/api/listings', async (req, res) => {
   try {
     const { title, description, price, category_slug, seller_id, image, images, is_featured, delivery_time, guarantee_days, details, tags } = req.body;
@@ -458,7 +450,6 @@ app.delete('/api/listings/:id', async (req, res) => {
 });
 
 // ============ YORUMLAR ============
-
 app.post('/api/reviews', async (req, res) => {
   try {
     const { reviewer_id, seller_id, listing_id, rating, comment } = req.body;
@@ -492,7 +483,6 @@ app.post('/api/reviews', async (req, res) => {
 });
 
 // ============ KULLANICI ============
-
 app.get('/api/users/:id/rating', async (req, res) => {
   try {
     const { data: reviews, error } = await supabase
@@ -550,7 +540,6 @@ app.get('/api/users/:id/profile', async (req, res) => {
   }
 });
 
-// Son görülme güncelleme
 app.put('/api/users/:id/last-seen', async (req, res) => {
   try {
     const { error } = await supabase
@@ -566,7 +555,6 @@ app.put('/api/users/:id/last-seen', async (req, res) => {
   }
 });
 
-// Kullanıcı bilgisi (mesajlaşma için - UUID kontrolü ile)
 app.get('/api/users/:id/info', async (req, res) => {
   try {
     const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -591,7 +579,6 @@ app.get('/api/users/:id/info', async (req, res) => {
   }
 });
 
-// Public Profil (Kullanıcı adına göre)
 app.get('/api/users/username/:username', async (req, res) => {
   try {
     const { data: user, error } = await supabase
@@ -667,7 +654,6 @@ app.put('/api/users/:id/profile', async (req, res) => {
 });
 
 // ============ BAKİYE ============
-
 app.post('/api/balance/deposit', async (req, res) => {
   try {
     const { user_id, amount } = req.body;
@@ -700,7 +686,6 @@ app.post('/api/balance/deposit', async (req, res) => {
 });
 
 // ============ SİPARİŞLER ============
-
 app.post('/api/orders', async (req, res) => {
   try {
     const { buyer_id, listing_id, delivery_email } = req.body;
@@ -800,7 +785,6 @@ app.get('/api/orders/seller/:userId', async (req, res) => {
 });
 
 // ============ MESAJLAR ============
-
 app.post('/api/messages', async (req, res) => {
   try {
     const { sender_id, receiver_id, listing_id, content } = req.body;
@@ -905,7 +889,6 @@ app.get('/api/messages/:user1/:user2', async (req, res) => {
 });
 
 // ============ BİLDİRİMLER ============
-
 app.get('/api/notifications/:userId', async (req, res) => {
   try {
     const { data, error } = await supabase
@@ -961,7 +944,6 @@ app.put('/api/notifications/:userId/read-all', async (req, res) => {
 });
 
 // ============ İSTATİSTİKLER ============
-
 app.get('/api/stats', async (req, res) => {
   try {
     const { count: totalListings } = await supabase
@@ -989,15 +971,5 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
-// ============ SUNUCUYU BAŞLAT ============
-
-app.listen(PORT, () => {
-  console.log(`
-╔══════════════════════════════════════════╗
-║  🚀 Itemevim Backend                     ║
-║   http://localhost:${PORT}              ║
-║  📦 Supabase: ${process.env.SUPABASE_URL ? 'Bağlı' : 'Bağlı Değil'}
-║  🔒 CORS: localhost:1919 izinli         ║
-╚══════════════════════════════════════════╝
-  `);
-});
+// Vercel için export
+export default app;

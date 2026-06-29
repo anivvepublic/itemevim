@@ -19,7 +19,7 @@ export default function SearchPage() {
 
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:5000/api/listings?search=${query}&limit=50`);
+        const res = await fetch(`/api/listings?search=${query}&limit=50`);
         const data = await res.json();
         
         if (data.data && Array.isArray(data.data)) {

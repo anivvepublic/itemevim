@@ -35,12 +35,12 @@ export default function OrdersPage() {
           setCurrentUserId(userId);
 
           // Alışverişleri getir
-          const purchasesRes = await fetch(`http://localhost:5000/api/orders/buyer/${userId}`);
+          const purchasesRes = await fetch(`/api/orders/buyer/${userId}`);
           const purchasesData = await purchasesRes.json();
           setPurchases(Array.isArray(purchasesData) ? purchasesData : []);
 
           // Satışları getir
-          const salesRes = await fetch(`http://localhost:5000/api/orders/seller/${userId}`);
+          const salesRes = await fetch(`/api/orders/seller/${userId}`);
           const salesData = await salesRes.json();
           setSales(Array.isArray(salesData) ? salesData : []);
         }

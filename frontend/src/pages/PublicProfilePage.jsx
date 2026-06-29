@@ -32,7 +32,7 @@ export default function PublicProfilePage() {
         setLoading(true);
         
         // Public profil verisi
-        const res = await fetch(`http://localhost:5000/api/users/username/${username}`);
+        const res = await fetch(`/api/users/username/${username}`);
         if (!res.ok) throw new Error('Kullanıcı bulunamadı');
         const data = await res.json();
         setProfileData(data);

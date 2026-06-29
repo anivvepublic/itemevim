@@ -85,7 +85,7 @@ export default function MessagesPage() {
   const initializeNewChat = async (userId) => {
     setInitializingChat(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${userId}/info`);
+      const res = await fetch(`/api/users/${userId}/info`);
       if (!res.ok) throw new Error('Kullanıcı bulunamadı');
       const userInfo = await res.json();
       
@@ -184,11 +184,11 @@ export default function MessagesPage() {
 
       const loadMessages = async () => {
         try {
-          const res = await fetch(`http://localhost:5000/api/messages/${currentUserId}/${otherUserId}`);
+          const res = await fetch(`/api/messages/${currentUserId}/${otherUserId}`);
           const data = await res.json();
           setMessages(Array.isArray(data) ? data : []);
           
-          const infoRes = await fetch(`http://localhost:5000/api/users/${otherUserId}/info`);
+          const infoRes = await fetch(`/api/users/${otherUserId}/info`);
           const infoData = await infoRes.json();
           setOtherUserInfo(infoData);
         } catch (err) {
@@ -206,7 +206,7 @@ export default function MessagesPage() {
 
     const updateLastSeen = async () => {
       try {
-        await fetch(`http://localhost:5000/api/users/${currentUserId}/last-seen`, {
+        await fetch(`/api/users/${currentUserId}/last-seen`, {
           method: 'PUT'
         });
       } catch (err) {
@@ -239,7 +239,7 @@ export default function MessagesPage() {
   const loadConversations = async () => {
     if (!currentUserId) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/messages/conversations/${currentUserId}`);
+      const res = await fetch(`/api/messages/conversations/${currentUserId}`);
       const data = await res.json();
       setConversations(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -271,7 +271,7 @@ export default function MessagesPage() {
     setNewMessage('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/messages', {
+      const res = await fetch('/api/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

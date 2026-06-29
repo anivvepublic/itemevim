@@ -18,7 +18,7 @@ export default function AllCategoriesPage() {
 
   // Kategorileri yükle
   useEffect(() => {
-    fetch('http://localhost:5000/api/categories/all')
+    fetch('/api/categories/all')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

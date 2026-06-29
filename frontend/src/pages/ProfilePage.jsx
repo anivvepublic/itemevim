@@ -97,7 +97,7 @@ export default function ProfilePage() {
             bio: user.bio || ''
           });
 
-          const res = await fetch(`http://localhost:5000/api/listings?seller_id=${user.id}&limit=50`);
+          const res = await fetch(`/api/listings?seller_id=${user.id}&limit=50`);
           const data = await res.json();
           
           if (data.data && Array.isArray(data.data)) {
@@ -106,7 +106,7 @@ export default function ProfilePage() {
             setUserListings(data);
           }
 
-          const ratingRes = await fetch(`http://localhost:5000/api/users/${user.id}/rating`);
+          const ratingRes = await fetch(`/api/users/${user.id}/rating`);
           const ratingData = await ratingRes.json();
           setSellerRating(ratingData);
         }
@@ -129,7 +129,7 @@ export default function ProfilePage() {
     if (!window.confirm('Bu ilanı silmek istediğinize emin misiniz?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/listings/${listingId}`, {
+      const res = await fetch(`/api/listings/${listingId}`, {
         method: 'DELETE'
       });
 
@@ -175,7 +175,7 @@ export default function ProfilePage() {
   const handleSaveProfile = async () => {
     setSaving(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${currentUserId}/profile`, {
+      const res = await fetch(`/api/users/${currentUserId}/profile`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

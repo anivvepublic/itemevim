@@ -22,7 +22,7 @@ export default function EditListing() {
 
   useEffect(() => {
     // Kategorileri yükle
-    fetch('http://localhost:5000/api/categories')
+    fetch('/api/categories')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setCategories(data);
@@ -30,7 +30,7 @@ export default function EditListing() {
       .catch(() => {});
 
     // İlanı yükle
-    fetch(`http://localhost:5000/api/listings/${id}`)
+    fetch(`/api/listings/${id}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.id) {
@@ -70,7 +70,7 @@ export default function EditListing() {
     setSaving(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/listings/${id}`, {
+      const res = await fetch(`/api/listings/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -93,7 +93,7 @@ export default function EditListing() {
     if (!window.confirm('Bu ilanı silmek istediğinize emin misiniz?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/listings/${id}`, {
+      const res = await fetch(`/api/listings/${id}`, {
         method: 'DELETE'
       });
 

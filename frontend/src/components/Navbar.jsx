@@ -49,7 +49,7 @@ export default function Navbar() {
 
   const loadNotifications = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/notifications/${userId}`);
+      const res = await fetch(`/api/notifications/${userId}`);
       const data = await res.json();
       if (res.ok) setNotifications(data);
     } catch (err) {
@@ -75,7 +75,7 @@ export default function Navbar() {
   const markAllRead = async () => {
     if (!currentUserId) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/notifications/${currentUserId}/read-all`, {
+      const res = await fetch(`/api/notifications/${currentUserId}/read-all`, {
         method: 'PUT'
       });
       if (res.ok) {

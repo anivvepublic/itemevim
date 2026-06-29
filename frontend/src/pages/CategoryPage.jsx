@@ -17,12 +17,12 @@ export default function CategoryPage() {
       try {
         setLoading(true);
         
-        const catRes = await fetch('http://localhost:5000/api/categories');
+        const catRes = await fetch('/api/categories');
         const categories = await catRes.json();
         const currentCategory = categories.find(c => c.slug === slug);
         setCategory(currentCategory);
 
-        const res = await fetch(`http://localhost:5000/api/listings?category=${slug}&limit=100`);
+        const res = await fetch(`/api/listings?category=${slug}&limit=100`);
         const data = await res.json();
         
         let results = [];

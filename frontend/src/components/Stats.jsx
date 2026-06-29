@@ -9,7 +9,7 @@ export default function Stats() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/stats')
+    fetch('/api/stats')
       .then(res => res.json())
       .then(data => {
         if (data && data.totalListings) {

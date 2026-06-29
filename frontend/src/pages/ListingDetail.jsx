@@ -59,9 +59,9 @@ export default function ListingDetail() {
       try {
         setLoading(true);
         
-        fetch(`http://localhost:5000/api/listings/${id}/view`, { method: 'POST' }).catch(() => {});
+        fetch(`/api/listings/${id}/view`, { method: 'POST' }).catch(() => {});
         
-        const res = await fetch(`http://localhost:5000/api/listings/${id}`);
+        const res = await fetch(`/api/listings/${id}`);
         if (!res.ok) throw new Error('İlan bulunamadı');
         
         const data = await res.json();
@@ -69,21 +69,21 @@ export default function ListingDetail() {
         
         setListing(data);
 
-        const reviewsRes = await fetch(`http://localhost:5000/api/listings/${id}/reviews`);
+        const reviewsRes = await fetch(`/api/listings/${id}/reviews`);
         const reviewsData = await reviewsRes.json();
         setReviews(Array.isArray(reviewsData) ? reviewsData : []);
 
         if (data?.seller_id) {
-          const ratingRes = await fetch(`http://localhost:5000/api/users/${data.seller_id}/rating`);
+          const ratingRes = await fetch(`/api/users/${data.seller_id}/rating`);
           const ratingData = await ratingRes.json();
           setSellerRating(ratingData);
 
-          const sellerRes = await fetch(`http://localhost:5000/api/users/${data.seller_id}/listings?exclude_id=${id}&limit=4`);
+          const sellerRes = await fetch(`/api/users/${data.seller_id}/listings?exclude_id=${id}&limit=4`);
           const sellerData = await sellerRes.json();
           setSellerOtherListings(Array.isArray(sellerData) ? sellerData : []);
         }
 
-        const similarRes = await fetch(`http://localhost:5000/api/listings/${id}/similar`);
+        const similarRes = await fetch(`/api/listings/${id}/similar`);
         const similarData = await similarRes.json();
         setSimilarListings(Array.isArray(similarData) ? similarData : []);
 
@@ -164,7 +164,7 @@ export default function ListingDetail() {
     setSubmittingReview(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/reviews', {
+      const res = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -187,7 +187,7 @@ export default function ListingDetail() {
 
       setReviews(prev => [{ ...data, reviewer }, ...prev]);
 
-      const ratingRes = await fetch(`http://localhost:5000/api/users/${listing.seller_id}/rating`);
+      const ratingRes = await fetch(`/api/users/${listing.seller_id}/rating`);
       const ratingData = await ratingRes.json();
       setSellerRating(ratingData);
 
@@ -238,7 +238,7 @@ const handleSendMessage = () => {
     setSubmittingReport(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/listings/${id}/report`, {
+      const res = await fetch(`/api/listings/${id}/report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

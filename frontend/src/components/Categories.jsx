@@ -6,7 +6,7 @@ export default function Categories() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/categories/popular?limit=8')
+    fetch('/api/categories/popular?limit=8')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {

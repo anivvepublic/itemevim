@@ -141,7 +141,7 @@ export default function CreateListing() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/categories')
+    fetch('/api/categories')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

@@ -45,7 +45,7 @@ function HomePage() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const featuredRes = await fetch('http://localhost:5000/api/listings/featured');
+        const featuredRes = await fetch('/api/listings/featured');
         const featuredData = await featuredRes.json();
         
         if (Array.isArray(featuredData)) {
@@ -54,7 +54,7 @@ function HomePage() {
           setFeaturedListings(featuredData.data);
         }
 
-        const latestRes = await fetch('http://localhost:5000/api/listings/latest?limit=12');
+        const latestRes = await fetch('/api/listings/latest?limit=12');
         const latestData = await latestRes.json();
         
         if (Array.isArray(latestData)) {
