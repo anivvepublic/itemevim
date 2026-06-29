@@ -1,9 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
-
-dotenv.config();
+import serverless from 'serverless-http';
 
 const app = express();
 
@@ -971,5 +969,5 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
-// Vercel için export
-export default app;
+// Vercel serverless function olarak export et
+export default serverless(app);
