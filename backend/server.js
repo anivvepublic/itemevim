@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: ['http://localhost:1919', 'http://127.0.0.1:1919'],
+  origin: ['http://localhost:1919', 'http://127.0.0.1:1919', 'https://itemevim.vercel.app', 'https://itemevim-*.vercel.app'],
   credentials: true
 }));
 
